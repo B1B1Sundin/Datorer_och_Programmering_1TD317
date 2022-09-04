@@ -1,0 +1,58 @@
+1. 
+Dataviruset Reverse har skadat alla textfiler i din dator genom att skriva om raderna baklänges. Exempelvis har en textfil fått följande utseende:
+,kcig negoks i ellO allil sroM
+kcilb i nekslos hco dnik åp rosor
+ålb orä räb vatu åms anrappäL
+åg räh masne ås tta ppals gaj araB
+
+
+?räd rasful mev ,murbilemmurB
+rä ted tssiv dnuh nE .akank anraksuB
+dalg rilb ellO neM .nesläp rä givruL
+!gaddoG es ,arb rav ted ,tarmak ne ,Å
+
+Ursprungligen stod det så här i filen:
+
+Mors lilla Olle i skogen gick, 
+rosor på kind och solsken i blick 
+Läpparna små utav bär äro blå 
+Bara jag slapp att så ensam här gå 
+
+
+Brummelibrum, vem lufsar där? 
+Buskarna knaka. En hund visst det är
+lurvig är pälsen. Men Olle blir glad 
+Å, en kamrat, det var bra, se Goddag!
+
+Skriv ett program som du kan använda för att återställa dina filer. 
+Programmet ska först fråga efter namnet på en fil med skadat innehåll, liksom namnet på en ny fil där den återställda texten ska lagras.
+Därefter ska programmet läsa in den skadade filen, vända på raderna och spara dem i rätt ordning på den nya filen. 
+Radstrukturen skall naturligtvis bibehållas, se exempel ovan.
+
+2. 
+Två kompisar (här Eva och Bosse) åker utomlands tillsammans på semester. 
+De turas om att betala för restaurangbesök, bensinkostnader, etc., men bokför noga vem som betalar vad. 
+Båda personerna är med på alla aktiviteter.
+ När de kommit hem till Sverige vill de reda ut ekonomin på ett rättvist sätt, dvs så att båda får betala lika mycket. 
+ Slutfrågan är: Vem är skyldig vem pengar och hur mycket?
+De lagrar alla data på en textfil, betalat.txt  
+
+Eva
+Bosse
+Eva     200.00
+Bosse   300.00
+Bosse   100.00
+Eva     100.00
+Eva     200.00
+
+De första två raderna anger namnen på de två personerna. Sedan kommer en följd av rader som anger vem som betalat och hur mycket. 
+Exempelvis så Eva betalade 200 kr då de åt glass, Bosse 300 kr då de tankade bilen etc.
+
+De vill att du skriver programmet som skall se ut så här vid körning (ungefär):
+
+Läser in namn och belopp från filen betalat.txt
+Eva har betalat 500 kr totalt.
+Bosse har betalat 400 kr totalt.
+Resultat: Bosse skall betala Eva 50 kr.
+Skriv programmet som läser från betalat.txt och beräknar summorna samt ger utskrift liknande den ovan. De två första raderna i filen anger alltid två olika namn. 
+I exemplet ovan följer sedan fem (5) rader, men programmet skall klara av kvittolistor (filer) av olika längd naturligtvis.

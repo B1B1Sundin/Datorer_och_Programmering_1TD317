@@ -1,0 +1,284 @@
+Ge filnamn: 
+doyle
+Resultat för bokstäverna A-Z
+Totala antalet bokstäver: 12885
+
+Bokstavsfördelning:
+
+A: 1041
+B: 171
+C: 440
+D: 506
+E: 1555
+F: 280
+G: 187
+H: 796
+I: 980
+J: 15
+K: 103
+L: 486
+M: 352
+N: 833
+O: 991
+P: 254
+Q: 10
+R: 727
+S: 835
+T: 1188
+U: 384
+V: 131
+W: 267
+X: 31
+Y: 320
+Z: 2
+
+Bokstavsfördelning:
+
+A ****************
+B **
+C ******
+D *******
+E ************************
+F ****
+G **
+H ************
+I ***************
+J 
+K *
+L *******
+M *****
+N ************
+O ***************
+P ***
+Q 
+R ***********
+S ************
+T ******************
+U *****
+V **
+W ****
+X 
+Y ****
+Z 
+
+Engelska har kvadratsumman = 1.75771
+Franska har kvadratsumman = 96.1956
+Svenska har kvadratsumman = 73.3371
+Tyska har kvadratsumman = 116.072
+Det är mest troligt att språket är engelska.
+
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU5/B $ ./a.out 
+Ge filnamn: 
+goethe.txt
+Resultat för bokstäverna A-Z
+Totala antalet bokstäver: 14027
+
+Bokstavsfördelning:
+
+A: 745
+B: 219
+C: 510
+D: 662
+E: 2340
+F: 196
+G: 461
+H: 799
+I: 1254
+J: 25
+K: 158
+L: 489
+M: 432
+N: 1512
+O: 295
+P: 59
+Q: 2
+R: 874
+S: 965
+T: 795
+U: 558
+V: 115
+W: 277
+X: 0
+Y: 89
+Z: 196
+
+Bokstavsfördelning:
+
+A **********
+B ***
+C *******
+D *********
+E *********************************
+F **
+G ******
+H ***********
+I *****************
+J 
+K **
+L ******
+M ******
+N *********************
+O ****
+P 
+Q 
+R ************
+S *************
+T ***********
+U *******
+V *
+W ***
+X 
+Y *
+Z **
+
+Engelska har kvadratsumman = 107.856
+Franska har kvadratsumman = 85.205
+Svenska har kvadratsumman = 160.318
+Tyska har kvadratsumman = 1.04313
+Det är mest troligt att språket är tyska.
+
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU5/B $ ./a.out 
+Ge filnamn: 
+lagerlof
+Resultat för bokstäverna A-Z
+Totala antalet bokstäver: 12221
+
+Bokstavsfördelning:
+
+A: 1376
+B: 112
+C: 176
+D: 707
+E: 1191
+F: 263
+G: 513
+H: 453
+I: 510
+J: 164
+K: 420
+L: 633
+M: 431
+N: 1105
+O: 526
+P: 162
+Q: 0
+R: 911
+S: 842
+T: 1090
+U: 200
+V: 372
+W: 0
+X: 3
+Y: 61
+Z: 0
+
+Bokstavsfördelning:
+
+A **********************
+B *
+C **
+D ***********
+E *******************
+F ****
+G ********
+H *******
+I ********
+J **
+K ******
+L **********
+M *******
+N ******************
+O ********
+P **
+Q 
+R **************
+S *************
+T *****************
+U ***
+V ******
+W 
+X 
+Y 
+Z 
+
+Engelska har kvadratsumman = 86.6804
+Franska har kvadratsumman = 145.722
+Svenska har kvadratsumman = 8.88258
+Tyska har kvadratsumman = 170.223
+Det är mest troligt att språket är svenska.
+
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU5/B $ ./a.out 
+Ge filnamn: 
+verne.txt
+Resultat för bokstäverna A-Z
+Totala antalet bokstäver: 11417
+
+Bokstavsfördelning:
+
+A: 931
+B: 163
+C: 411
+D: 467
+E: 1981
+F: 113
+G: 124
+H: 75
+I: 781
+J: 37
+K: 4
+L: 625
+M: 320
+N: 869
+O: 572
+P: 339
+Q: 103
+R: 779
+S: 966
+T: 793
+U: 679
+V: 165
+W: 1
+X: 60
+Y: 37
+Z: 22
+
+Bokstavsfördelning:
+
+A ****************
+B **
+C *******
+D ********
+E **********************************
+F *
+G **
+H *
+I *************
+J 
+K 
+L **********
+M *****
+N ***************
+O **********
+P *****
+Q *
+R *************
+S ****************
+T *************
+U ***********
+V **
+W 
+X *
+Y 
+Z 
+
+Engelska har kvadratsumman = 112.425
+Franska har kvadratsumman = 0.885142
+Svenska har kvadratsumman = 149.256
+Tyska har kvadratsumman = 90.491
+Det är mest troligt att språket är franska.
+
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU5/B $ ./a.out 
+Ge filnamn: 
+Lisa.txt
+Det finns ingen fil med namnet Lisa.txt
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU5/B $ 

@@ -1,0 +1,199 @@
+1. 
+Skriv ett program som läser in fem heltal i en array och därefter skriver ut talen i omvänd ordning.
+En körning kan se ut på följande sätt (indata som användaren ger är i fet stil):
+Ge 5 tal.
+Ange tal 1: 3
+Ange tal 2: 1
+Ange tal 3: 23
+Ange tal 4: -2
+Ange tal 5: 7
+Talen i omvänd ordning: 7 -2 23 1 3
+
+2.
+Skriv ett program som läser in ett heltal n (antag att n är maximalt 10). Därefter ska n stycken flyttal läsas in och lagras i en array. Programmet ska sedan läsa in ytterligare ett flyttal och beräkna hur många tal i arrayen som är mindre än detta tal. Beräkningen ska göras med hjälp av en funktion mindre_an. Huvudfunktionen (=huvudprogrammet) ska slutligen skriva ut antalet.
+Skriv funktionen som deklareras enligt:
+
+int mindre_an( const double x[], int antal, double specialtal );
+Här är x en array och antal är antalet tal i arrayen som ska jämföras med talet specialtal.
+Körningsexempel:
+
+Hej! Ge antal tal: 7
+Ge de 7 st reella talen efter varandra:
+1.4 -7.8 4.55 3.2 -1.23 0.6 5.9
+Ge nu ett enda extratal: 3.0
+Antal tal som är mindre än 3 är 4 st.
+
+3.
+I den här uppgiften ska du sänka priserna på vissa varor med 30%. 
+Du har två arrayer pris och rea. Båda kan innehålla max 20 stycken element. 
+Variabeln pris är av typen double och rea av typen int. I rea är varje tal antingen 1 eller 0, där 1 står för prissänkning (dvs rea) och 0 står betyder att det inte är någon prissänkning på motsvarande vara. I pris står priserna som ska sänkas om motsvarande element i rea är lika med 1.
+Din uppgift är att skriva ett program som läser in priserna och lagrar dem i arrayen pris samt läser in talen (1 eller 0) och lagrar dem i arrayen rea. Programmet ska sedan ändra priserna och skriva ut de nya priserna.
+Körningsexempel:
+
+Hur många artiklar? 10
+Ge priserna:
+99.50 24.5 44.5 66.78 22.30 100.00 100.00 50.60 55.50 10.40
+Ge 1:or och 0:or:
+1 1 1 0 0 0 1 1 1 0
+Nya priser: 
+69.65  17.15  31.15  66.78  22.3  100   70   35.42  38.85  10.4 
+
+4.
+OBS! Extra uppgift - i mån av tid och om du vill. Fortsätt annars med uppgift 5 (övningar inför inlämningsuppgift 4).
+I uppgiften 3 ovan, skulle det vara bra om man kunde skicka in båda arrayerna pris och rea i en funktion som ändrar priserna och returnerar dem i samma array.
+ Det är också snyggare om elementen i rea är av typen bool.
+Skriv funktionen byt_priser enligt:
+
+void byt_priser(double x[], const bool r[], int antal);
+
+Parametern x är en array som innehåller priserna och antal betecknar det aktuella antalet priser i arrayen x. 
+Parametern r är en array som innehåller ettor eller nollor (sant eller falskt) som bestämmer om priserna ska sänkas eller ej.
+
+Skriv också en huvudfunktion som testar funktionen byt_priser.
+
+Skriv en funktion som kan anropas i (exempelvis main) med
+statistik(x, antal, medelv, min, max);
+
+där x är en array som har antal stycken tal, medelv står för medelvärdet av x och min och max är minsta respektive största tal i arrayen x. Funktionen skall givet arrayen x och antalet antal beräkna och " returnera" min, max och medelv.
+
+Hur skall funktionen kunna "returnera" tre värden när en funktion bara kan returnera ett värde med en return-sats? Vilka andra sätt finns det för en funktion att "returnera" (ge tillbaks) flera värden? Tänk på vilka parametrar som ska respektive inte ska vara referensparametrar, samt vilken returtyp funktionen bör ha. Skriv även en mainfunktion som testar funktionen.
+
+
+5. 
+(Förberedande inför Inlämningsuppgift 4)
+Histogram för heltal.
+
+A.
+Skriv ett program som läser in ett antal temperaturer mellan 0 och max grader och sedan gör en s k frekvenstabell, dvs som visar antalet temperaturer med grad 0, antalet med grad 1, antalet med grad 2 etc.
+Inläsning av tal skall sluta om temperatur är mindre än noll eller mer än max. Heltalet max skall läsas in först.
+
+Körningsexempel (användaren skriver det som är i fet stil):
+Ge maxtemperatur (mellan 0 och 50): 7
+Ge temperaturer (heltal),
+avsluta med negativt eller större än 7:
+1 1 5 5 4 7 7 7 6 0 0 2 99    
+
+Frekvenstabell:
+Temp.    Antal   Procent
+0       2       16.6667
+1       2       16.6667
+2       1       8.33333
+3       0       0
+4       1       8.33333
+5       2       16.6667
+6       1       8.33333
+7       3       25
+
+Tips: Låt index i arrayen motsvara temperaturen. 
+Kom ihåg att "nollställa" frekvens-arrayen, dvs sätta alla element till noll innan man börjar läsa in tal och "bygga upp" frekvenser (dvs addera ett till elementet med index temp i arrayen). 
+Läs in temperaturer med klassisk while-loop, se algoritm nedan.
+int temp;
+...
+  cin >> temp;     // Läs första temperaturen
+
+  while ( 0 <= temp && temp <= max )
+    {
+      ...          // Lägg till 1 till elementet på plats "temp".
+      ...          // Öka på antal temperaturer.
+      cin >> temp; // Läs ny temperatur.
+    }
+...
+
+Algoritm:
+Deklarera variabler, t ex:
+  const int MAXTEMP = 51;
+  int frek[MAXTEMP]; // har index 0, 1, 2, ..., MAXTEMP-1
+  int temp, max, antal = 0;
+Läs in max.
+"Nollställ" arrayen frek.
+Räknare av antal inlästa tal sätts till noll, antal = 0
+
+Loop: Läs in tal till temp med klassisk while-loop
+Lägg till 1 till element med index temp i arrayen frek
+Lägg till 1 till antal
+Skriv ut resultatet, dvs "temperatur, antal, procent", se körningsexempel.
+
+B.
+Som uppgiften ovan, men mer flexibel. 
+Här skall användaren kunna få en frekvenstabell för temperaturer mellan min och max (heltal, som kan vara negativa).
+
+Körningsexempel (användaren skriver det som är i fet stil):
+Ge min- och maxtemperatur (så att max-min+1 <= 51 ): -5 1
+Ge temperaturer (heltal),
+avsluta med mindre än -5 eller eller större än 1:
+-5 -5 -1 -1 -2 -3 0 0 -5 -5 0 11
+
+Frekvenstabell:
+Temp.    Antal   Procent
+-5      4       36.3636
+-4      0       0
+-3      1       9.09091
+-2      1       9.09091
+-1      2       18.1818
+0       3       27.2727
+1       0       0
+Tips: Ta en kopia av program du skrev i föregående uppgift, eller lösningsförslag för övning 5. 
+Här gäller det att klura lite med index. Vi kan ju inte ha temperaturer som index längre, för index får ej vara negativa i C++. 
+Om min = -5 och max = 1, som i exemplet ovan, så kan man tänka
+index = temp - min
+antal tal vi beräknar frekvenser för är: max - min + 1
+dvs index kommer gå från 0, 1, 2, ..., max-min. 
+På plats index lagrar vi frekvensen för temperaturen temp.
+ temp    temp-min (dvs index)
+ -5       -5-(-5) = -5+5 = 0
+ -4       -4-(-5) = -4+5 = 1
+  ...
+  1        1-(-5) =        6 
+
+6.
+Förberedande inför Inlämningsuppgift 4
+2D-array.
+I nedanstående program finns en tvådimensionell array FREKV som innehåller bokstavsfrekvensen i procent för typiska texter skrivna på engelska, franska, svenska och tyska. 
+Bokstäverna är A-Z. 
+Första index i arrayen motsvarar språket och index nr 2 motsvarar bokstaven.
+FREKV[0][0] (8.27%) är frekvensen av bokstaven A för engelska.
+FREKV[0][25] (0.03%) är frekvensen av bokstaven Z för engelska etc.
+FREKV[1][0] (7.97%) är frekvensen av bokstaven A för franska etc.
+
+ #include <iostream>
+ using namespace std;
+ const int ANTAL_BOKSTAVER = 26;  //A-Z
+ const int ANTAL_SPRAK = 4;
+ const double FREKV[ANTAL_SPRAK][ANTAL_BOKSTAVER]=
+        {{8.27,1.48,2.94,4.03,11.78,2.22,1.72,6.77, //engelska: frekvens för A-Z
+          7.39,0.12,0.81,3.76,2.85,6.71,7.79,1.54,
+          0.05,5.95,6.69,9.07,2.66,1.13,2.14,0.19,
+          1.89,0.03},
+         {7.97,1.40,3.55,3.79,16.89,1.02,1.00,0.75, //franska: frekvens för A-Z
+          7.08,0.38,0.04,5.51,2.82,8.11,5.19,2.78,
+          1.01,6.69,8.35,7.22,6.09,1.35,0.02,0.54,
+          0.30,0.15},
+         {9.50,1.11,1.53,5.30,8.94,1.74,3.57,3.94,  //svenska: frekvens för A-Z
+          3.98,0.89,3.26,4.93,3.41,8.46,5.01,1.77,
+          0.00,6.73,5.56,9.20,1.94,2.42,0.00,0.05,
+          0.45,0.00},
+         {5.12,1.95,3.57,5.07,16.87,1.35,3.00,5.79, //tyska: frekvens för A-Z
+          8.63,0.19,1.14,3.68,3.12,10.64,1.74,0.42,
+          0.01,6.30,6.99,5.19,3.92,0.77,1.79,0.01,
+          0.69,1.24}}; 
+
+A.
+Skriv ett program som skriver ut bokstavsfrekvenserna för de fyra språken i fyra kolumner. 
+En kolumn för respektive språk, e xempelvis ungefär så här:
+Eng     Fra     Sve     Tys     
+8.27    7.97    9.50    5.12    
+1.48    1.40    1.11    1.95    
+...
+0.03    0.15    0.00    1.24   
+Lägg ej ned tid på att få ditt program att producera spikraka kolumner som ovan.
+
+B.
+Genom att jämföra bokstavsfrekvenserna mellan två språk kan man räkna ut "likheten" mellan språken. En metod kan vara att beräkna summan av de kvadratiska skillnaderna mellan bokstavsfrekvenserna. Exempelvis skillnaden mellan engelska och franska räknas ut som:
+sum = (FREKV[0][0]-FREKV[1][0])*(FREKV[0][0]-FREKV[1][0])+ // EngA-FraA
+      (FREKV[0][1]-FREKV[1][1])*(FREKV[0][1]-FREKV[1][1])+ // EngB-FraB
+      etc
+Skriv ett program som beräknar "likheten" mellan två språk av engelska, franska, svenska och tyska. 
+Programmet skall fråga efter vilka två språk som skall jämföras och därefter beräkna och skriva ut summan av kvadratskillnaderna mellan språken.
+Vilka språk av engelska, franska, svenska och tyska är mest "lika" resp. minst "lika" varandra?
+
+Fundera på hur programmet kan modifieras så att det räknar ut likheten mellan alla fyra språk (lösningsförslag till detta finns inte i lösningsförslagen).

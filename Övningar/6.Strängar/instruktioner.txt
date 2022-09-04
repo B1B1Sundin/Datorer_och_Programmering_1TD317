@@ -1,0 +1,59 @@
+Strängar
+
+1. 
+Skriv ett program som läser in ett namn och skriver ut:
+Hej <namn>.
+
+Exempel: Om namnet är Lisa Strit ska programmet skriva ut:
+Hej Lisa Strit
+
+2.
+Skriv ett program som läser in ett namn och skriver ut:
+namnet lodrätt,
+namnet baklänges,
+med förklarande rubriker.
+
+3.
+Skriv en funktion skriv som givet två parametrar löser uppgiften ovan.
+Exempel:
+Funktionsanrop: skriv(namn,"baklänges");
+ska resultera i att funktionen skriver ut namnet namn baklänges, och med parametern "lodrätt" ska utskriften ske vertikalt.
+Skriv även main som anropar din funktion för att testa att den fungerar på rätt sätt.
+OBS! Om det blir problem med svenska tecken kan använda orden "baklanges" resp. "lodratt" istället.
+
+4.
+Förberedande uppgift för Inlämningsuppgift 4
+Skriv ett program som läser in en textrad (sträng), beräknar och skriver ut hur många bokstäver, siffror och övriga tecken som förekommer i textraden.
+ Om du vill så kan du lösa den här uppgiften med hjälp av en funktion som har 4 parametrar, en sträng och tre räknare.
+
+5. 
+ Förberedande uppgift för Inlämningsuppgift 4
+Skriv ett program som läser in en rad text, beräknar och skriver ut frekvenser av de olika bokstäverna. Antag att texten består av enbart engelska bokstäver.
+
+6.
+En array av strängar kan deklareras och initieras som:
+const int ANTAL_SPRAK=4;
+string spraknamn[ANTAL_SPRAK] = {"Engelska","Franska","Svenska","Tyska"};
+Arrayen har fyra element, där varje element är en sträng (string). Inläsning och utskrift kan göras så här:
+cout << "Ge en text:" << endl;
+getline(cin,spraknamn[0];       // Läs in 1:a strängen
+cout >> "Text=" << endl;
+cout << spraknamn[3];  // Skriv ut 4:e strängen
+Skriv ett program som läser in fyra strängar och lagrar dem i en array. Läs sedan in ett heltal (tal) som skall användas för att "kryptera" de fyra strängarna. 
+Den enkla krypteringen består av att addera tal till varje tecken i strängarna. Därefter skall de krypterade strängarna skrivas ut.
+
+Exempel programkörning:
+Mata in en rad med text: 123456
+Mata in en rad med text: abcdef
+Mata in en rad med text: Karl Astrid
+Mata in en rad med text: *^$[+@!!!
+Ge ett tal:1
+Krypterade texterna:
+234567
+bcdefg
+Lbsm!Btusje
++_%\,A"""
+
+7.
+Som uppgift 5, men där beräkning och utskrift av frekvensen görs av en funktion histo. 
+Skriv alltså en main-funktion som läser in en rad text och därefter anropar funktionen histo.

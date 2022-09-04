@@ -1,0 +1,60 @@
+Uppgift
+Din uppgift är att skriva ett program som läser en text och registrerar vilka bokstäver den består av. 
+Programmet ska beräkna hur stor andel av varje bokstav som finns, dvs ett bokstavshistogram. 
+Genom att jämföra med några olika givna språks bokstavshistogram, ska programmet sedan bestämma vilket språk det är mest troligt att texten är skriven på. 
+Ett histogram över andelen av de olika bokstäverna i texten skall också skrivas ut. 
+Uppgiften skall lösas som två deluppgifter, A och B. Deluppgift A löser en del av hela uppgiften och utgör ett steg på vägen till deluppgift B. 
+Börja därför med deluppgift B först när deluppgift A är helt klar. Uppgiften skall redovisas i två delar (del A resp. del B) som två separata filer.
+
+ 
+Kompletterande frågor
+Förutom kodning ska du också besvara följande frågor efter att dina program fungerar (kan alltså t ex besvaras i kommentarfältet i Studium):
+
+- I lösningsförslagen tipsar vi om att du ska skapa/ladda hem en fil med bara lite innehåll medan man testar sitt program. Varför, tror du?
+- Texten i filen lagerlof.txt innehåller de svenska bokstäverna å, ä och ö. Som programmet fungerar nu räknas inte dessa bokstäver med alls. Hur skulle man gå tillväga för att också inkludera å, ä och ö i histogrammet. Du behöver inte ge en program-lösning, men resonera kring hur man skulle kunna göra.
+ 
+
+Deluppgift A
+
+Skriv ett program som läser in en textrad från tangentbordet, beräknar förekomsten av varje bokstav A-Z, skriver ut det totala antalet bokstäver och en tabell över förekomsten av respektive bokstav.
+
+För att lösa uppgiften skall du använda en hjälpfil som innehåller början på ett program (ett s k programskal). 
+Detta programskal ska du komplettera med två egna funktioner. 
+Vilka parametrar dessa funktioner ska ha, eller vad de eventuellt ska returnera får du bestämma själv. 
+Den enda kod själva huvudprogrammet skall innehålla är inläsning av en textrad från tangentbordet och anrop av de två funktionerna. 
+Ladda ner (kopiera) programskalet till deluppgift 4A, programskal_Inlupp4a.cpp  
+
+- Funktionerna som måste finnas i programmet:
+
+berakna_histogram_abs(...)
+Funktionen skall gå igenom en sträng (d.v.s. en variabel av typen string innehållande en text) och beräkna ett histogram med förekomsten av varje bokstav. 
+Ingen skillnad görs mellan "stora" (versaler) och "små" (gemener) bokstäver, och båda typerna måste naturligtvis ingå vid histogramberäkningen. Resultatet skall lagras i en passande datatyp. Funktionen skall beräkna och returnera det totala antalet behandlade bokstäver, men du behöver ej hantera å, ä, ö.
+Tips om hur ett histogram kan beräknas, se Arrayer -> Övningar uppgift 5 och Strängar -> Övningar uppgift 4, 5 och 7.
+
+skriv_histogram_abs(...)
+Funktionen skall skriva ut ett förenklat bokstavshistogram som en tabell med två kolumner: bokstav och bokstavens förekomst som ett heltal. Det förenklade histogrammet kan se ut så här:
+A: 5
+B: 8
+C: 0
+D: 4
+...
+
+- Tips på lösningsmetodik deluppgift A
+
+Lös varje delproblem separat i enkla program. Vartefter som delproblemen löses byggs programmet på med lösningen på nästa delproblem, etc.
+
+Skriv och testa funktionen berakna_histogram_abs.
+Läs in en mycket kort textrad och anropa funktionen. Gör några testutskrifter i funktionen som visar att den skapar ett korrekt histogram.
+Skriv och testa funktionen skriv_histogram_abs.
+Läs in en textrad, anropa berakna_histogram_abs och skriv_histogram_abs
+För mer tips, Klicka på länken Inlämningsuppgift 4 - Mera tips.
+
+- Testdata och facit
+
+Testdata 1: AbCdNNooPPwXyZ
+Testdata 2: 1234ddddacccbb!?
+Testdata 3: Denna rad innehåller ett å!
+Testdata 4 (en tom rad):
+
+Kontrollera att dina programkörningar ger resultat som motsvarar körningen korning_Inlupp4A.txt  Ladda ner korning_Inlupp4A.txt.
+OBS! Du får inte använda pekare i denna uppgift. Det kommer senare i kursen.

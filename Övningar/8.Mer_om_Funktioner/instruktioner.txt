@@ -1,0 +1,99 @@
+1. 
+Skriv klart deklaration och implementation
+Funktionen summa ska summera ett visst antal element i en följd i en array. Det saknas dock rader med kod. 
+Skriv klart deklaration och implementation av summa.
+
+#include <iostream>
+
+using namespace std;
+
+const int MAX = 10;
+
+double summa( ... parameterlista ... );
+
+int main()
+{
+  double a[MAX] = { 1.1, 3.1, 2.1, 5.4, 1.3,
+                   17.0, 1.4, 1.2, 1.1, 1.7 };
+  
+  cout << "Här är alla arrayelement:" << endl;
+  
+  for ( int i = 0; i < MAX; i++ )
+    cout << a[i] << " ";
+
+  cout << endl;
+
+  cout << "Summa av alla arrayelement: " 
+       << summa( a, MAX ) << endl;
+  cout << "Summa från index = 2 t.o.m 4: " 
+       << summa( a, MAX, 2, 4 ) << endl;
+  return 0;
+}
+
+double summa( ... parameterlista ... )
+{
+// Summera element i en array.
+.....
+
+}
+Här kan du se ett körexempel:
+
+Här är alla arrayelement:
+1.1 3.1 2.1 5.4 1.3 17 1.4 1.2 1.1 1.7 
+Summa av alla arrayelement: 35.4
+Summa från index = 2 t.o.m 4: 8.8
+
+2.
+Skriv kodrader som saknas
+Nedan ser du ett C++-program som skriver "Hurra!" ett antal gånger.
+
+int main()
+{
+  int antal;
+  cout << "Hej! Hur många gånger skall vi hurra?" << endl;
+  cin >> antal;
+
+  hurra( antal );
+
+  return 0;
+}
+Körningsexempel visar detta:
+
+Hej! Hur många gånger skall vi hurra?
+5
+Hurra!
+Hurra!
+Hurra!
+Hurra!
+Hurra!
+
+Skriv olika varianter av hurra.
+A)
+Kopiera det ofullständiga programmet, hurra0.cpp och ändra namn på det till ovning8_2A.cpp. 
+Skriv till C++-kodrader som saknas i funktionen hurra. Du ska använda en iterativ (upprepande) algoritm. Kompilera och testkör.
+B)
+Kopiera det ofullständiga programmet, hurra0.cpp och ändra namn på det till ovning8_2B.cpp. 
+Skriv till C++-kodrader som saknas i funktionen hurra. Du skall använda en rekursiv algoritm. Kompilera och testkör.
+ 
+
+// hurra0.cpp
+#include <iostream>
+using namespace std;
+
+void hurra( int n );
+
+int main()
+{
+  int antal;
+  cout << "Hej! Hur många gånger skall vi hurra?" << endl;
+  cin >> antal;
+
+  hurra( antal );
+
+  return 0;
+}
+
+void hurra( int n )
+{
+  .....här saknas kod...
+}

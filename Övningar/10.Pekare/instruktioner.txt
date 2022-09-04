@@ -1,0 +1,57 @@
+1. 
+Med följande deklarationer skapar vi en heltalspekare b, som pekar på heltalsvariabeln a:
+int a = 3;
+int *b = &a;
+Vad är b? Vad är *b?
+
+För att besvara detta, kopiera in kodstommen till programmet stomme.cpp  Ladda ner stomme.cpp.
+Skriv följande satser efter deklarationerna, kompilera och testkör för att hitta svaret:
+
+ 
+
+Skriv ytterligare följande satser i programmet:
+
+int c = 5; b = &c;
+cout << "\n b =" << b << endl;
+cout << "\n *b =" << *b << endl;
+Ändra värdet på *b och skriv ut värdet av c. Vad händer? Kompilera och kör. 
+Kan b peka på en double?
+- Bara om b liksom c är av samma datatyp.
+
+2.
+Skriv ett program som gör följande:
+Läs in ett heltal n.
+Skapa en heltalsarray med plats för n stycken tal.
+Läs sedan n tal och lagra dem i arrayen.
+Skriv sedan ut talen med 5 tal per rad.
+Kopiera arrayen till en annan array.
+
+3.
+Skriv ett program som gör följande:
+
+Skriv en funktion
+double *laes ( int &n )
+som läser in heltalet n och n st flyttal (double) i en array, och returnerar denna array som en pekare.
+
+Skriv en funktion som tar en array som inparameter, och beräknar och returnerar medelvärdet.
+double medel ( double *arr, int antal)
+
+Skriv ett huvudprogram som testar funktionerna.
+
+4.
+Skriv ett program som gör följande:
+Skriv en funktion
+double *sort ( const double *arr, int antal)
+som returnerar en sorterad array. Talen kommer från inparametern arr.
+Varför har vi deklarerat arr som en const?
+Skriv en funktion
+void skriv ( double *array, int n, int k )
+som skriver ut talen i arrayen array med k st tal per rad. n är längden på arrayen.
+Skriv även ett huvudprogram som testar funktionerna.
+
+5.
+Skriv ett program som gör följande:
+Skriv en funktion
+double sum ( double *a, int n )
+som beräknar summan av arrayen a med hjälp av rekursion.
+Skriv ett huvudprogram som testar funktionen.

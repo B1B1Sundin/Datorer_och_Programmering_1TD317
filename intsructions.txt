@@ -1,0 +1,5 @@
+To compile, type - g++ nameOfFile.cpp
+To execute, type - ./a.out
+
+To compile, type - g++ nameOfFile.cpp -0 nameOfFile.o
+To execute, type - ./nameOfFile.o

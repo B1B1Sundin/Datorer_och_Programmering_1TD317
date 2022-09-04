@@ -1,0 +1,111 @@
+Deluppgift B
+Nu ändrar vi lite på klassdefinitionerna. 
+Inga statiska arrayer får förekomma längre. Att arrayerna istället blir dynamiska betyder att några klassmetoder behöver modifieras, 
+samt att några/någon av klasserna behöver kopieringskonstruktorer och tilldelningsmetoder (eller överlagrad tilldelningsoperator). 
+En tilldelningsoperator för klassen Transaktion är given (se nedan).
+
+Klassen Transaktion
+ class Transaktion
+ {
+ private:
+   string  datum;
+   string  typ;
+   string  namn;
+   double  belopp;
+   int     antal_kompisar;
+   string *kompisar;
+
+  public:
+   Transaktion();
+   ~Transaktion();
+   Transaktion& operator=( const Transaktion& t);
+   string hamtaNamn() const;
+   double hamtaBelopp() const;
+   int    hamtaAntalKompisar() const;
+   bool   finnsKompis(const string &namnet) const;
+   bool   lasIn(istream &is);
+   void   skrivUt(ostream &os) const;
+   void   skrivTitel(ostream &os) const;
+   ...eventuellt div. annat...
+ }; 
+
+Den dynamiska arrayen kompisar har nu antal_kompisar st element.
+
+Implementationen av tilldelningsoperatorn:
+Transaktion& Transaktion::operator=( const Transaktion& t)
+{
+  if (this != &t)
+    {
+      delete[] kompisar;
+      datum          = t.datum;
+      typ            = t.typ;
+      namn           = t.namn;
+      belopp         = t.belopp;
+      antal_kompisar = t.antal_kompisar;
+      kompisar       = new string[antal_kompisar];
+      for (int i=0; i < ant_kompisar; i++)
+	kompisar[i] = t.kompisar[i];
+    }
+  return *this;
+}
+ 
+
+Klassen Person
+Denna klass innehåller ingen dynamisk array och ändras inte alls.
+
+Klassen PersonLista
+class PersonLista
+ {
+ private:
+   int     antal_personer;
+   Person *personer;
+
+ public:
+   PersonLista();
+   ~PersonLista();
+   void   laggTill(Person ny_person);
+   void   skrivUtOchFixa(ostream &os);
+   double summaSkyldig() const;
+   double summaBetalat() const;
+   bool   finnsPerson(const string &namn);
+   ...eventuellt div. annat...
+ }; 
+Den dynamiska arrayen personer har antal_personer st element.
+
+Metoden laggTill tar ett personobjekt som inparameter, ny_person, och lägger till på slutet i den dynamiska arrayen personer. För att inte komplicera saken, ska vi allokera en ny dynamisk array vid varje anrop av denna metod som innehåller en till person, kopiera över personer från den gamla arrayen, samt ta bort den gamla dynamiska pekaren.
+ 
+
+Klassen TransaktionsLista
+ class TransaktionsLista
+ {
+ private:
+   int          antal_transaktioner;
+   Transaktion *transaktioner;
+
+ public:
+   TransaktionsLista();
+   ~TransaktionsLista();
+   void   lasIn(istream & is);
+   void   skrivUt(ostream & os);
+   void   laggTill(Transaktion & t);
+   double totalKostnad() const;
+   double liggerUteMed(const string &namnet);
+   double arSkyldig(const string &namnet);
+   PersonLista FixaPersoner();
+    ...eventuellt div. annat...
+ }; 
+Den dynamiska arrayen transaktioner har antal_transaktioner st element.
+
+- Metoden laggTill skall lägga till ett nytt transaktionsobjekt sist i den dynamiska arrayen trans. 
+Arrayen växer när nya objekt tillkommer, vilket sker genom att allokera en ny array, kopiera innehållet, och avallokering av arrayen som fanns innan.
+
+
+Kommentarer om del B
+Inga statiska arrayer får förekomma! Alla arrayer skall vara dynamiska. Det finns inga begränsningar för maximala antalet element i arrayerna. Exempel: arrayen med transaktionerna i klassen TransaktionsLista växer då nya transaktioner tillkommer. Heltalet antal_transaktioner anger hela tiden hur lång den dynamiska arrayen är, dvs detta värde förändras under körningen.
+Observera att eftersom vi arbetar med dynamiska arrayer och pekare så behövs det kopieringskonstruktorer och tilldelningsmetoder (eller överlagrad tilldelningsoperator) som gör djupkopiering, för att det skall fungera. Du får själv lista ut och resonera fram vilka klasser som behöver kompletteras med detta. Nu står det bara ...eventuellt div. annat... där det eventuellt saknas fler metoder och konstruktorer. Läs mer om djupkopiering i avsnittet Klasser & pekare -> Listor.
+Allt annat är som i del a! Programmet ska kunna utföra samma sak, och huvudprogrammet kan vara detsamma.
+Göra samma testkörningar som för deluppgift a.
+
+OBS! Mycket viktigt
+Ändra inte alla klasser samtidigt! Kompilerings- och exekveringsfel i program med pekare är inte alltid så lätta att förstå. Ta en klass i taget och byt ut den statiska arrayen mot en dynamisk. Ändra sedan i klassen så att det fungerar med den dynamiska arrayer. Vilka metoder behöver ändras? Behöver klassen utökas ytterligare? Kommer någon av de andra klasserna att påverkas? Fortsätt sedan med en annan klass och byt ut den statiska arrayen mot en dynamisk.
+##########################################################################################################################################################################################################

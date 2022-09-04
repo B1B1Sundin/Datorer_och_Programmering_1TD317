@@ -1,0 +1,4 @@
+28 Celsius
+24 Celsius
+35 Celsius
+100 Fahrenheit

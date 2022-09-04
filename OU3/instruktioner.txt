@@ -1,0 +1,190 @@
+Uppgift
+Din uppgift här är att skriva ett program som gör några enkla beräkningar utifrån användarens inmatningar. 
+Programmet ska fråga efter två heltal och vilken beräkning som ska utföras. 
+Varje beräkningstyp representeras av en  bokstav, se listan nedan. De beräkningar som programmet ska klara av att göra är:
+
+a Addera tal
+m Multiplicera tal
+k Beräkna kvadratsumman av tal
+
+Programmet ska läsa in två tal och beroende på vald beräkning (a, m eller k) ska alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras. 
+Om t ex talen 3 och 5 matas in och om man gör valet k så ska svaret 50 beräknas eftersom 3*3 + 4*4 + 5*5= 50, dvs kvadratsumman av 3, 4 och 5 är 50. 
+Om talen 4 och 1 matas in och om man gör valet m så ska svaret 24 beräknas eftersom 1*2*3*4= 24. 
+Om talen 3 och -1 matas in och om man gör valet m så ska svaret 0 (noll) beräknas eftersom (-1)*0*1*2*3=0.
+
+Specialfallet att de båda inmatade talen är lika kan behandlas på följande sätt: Om talen 3 och 3 matas in:
+
+Vid valet a: svaret blir 3.
+Vid valet m: svaret blir 3.
+Vid valet k: svaret blir 32=9.
+Programmet måste klara av att hantera fallet att talen inte matas in i storleksordning. Det ska inte heller vara några problem att mata in negativa tal.
+
+Kompletterande frågor
+Besvara även följande frågor, t ex direkt i kommentarfältet vid inlämningen i Studium, eller i filen där du rapporterar programkörningar:
+
+Tycker du att det finns någon fördel att använda funktioner för att utföra olika uppgifter i programmet, jämfört med hur det såg ut i Inlämningsuppgift 2 där allt hände i huvudprogrammet?
+I någon av dina skrivna funktioner använder du dig troligen av referensparametrar. Varför gör man inte det jämt?
+ 
+
+Funktioner
+Uppgiften löses genom att du skriver följande funktioner:
+
+... skrivInfo(...);
+Funktionen ska skriva ut en text som kort förklarar vad programmet gör.
+... lasEttTal(...);
+Funktionen ska skriva ut en ledtext och läsa in och returnera ett (1) heltal.
+... lasOp(...);
+Funktionen ska läsa in och returnera ett tecken som representerar den valda beräkningen (tecknet a, m eller k). Ledtext skrivs ut så att användaren vet vad som ska matas in.
+... ordna(...);
+Funktionen ska sortera de två inlästa talen i storleksordning. Funktionen kan antingen ha två eller fyra parametrar, beroende på hur man löser problemet.
+... berakna(...);
+Funktionen ska utföra den beräkning som ges av tecknet i variabeln op. Funktionen skall ha två parametrar som innehåller den undre resp. den övre gränsen för de tal som ska summeras, multipliceras eller kvadratsummeras. Vald beräkning skall vara en tredje parameter. Funktionen returnerar resultatet av beräkningen.
+... skrivResultat(...);
+Funktionen ska skriva ut resultatet av beräkningen.
+Bestäm för respektive funktion lämplig returtyp och vad parameterlistorna bör innehålla, eller om de ska vara tomma.
+
+
+Funktionerna ska testas med mainfunktionen (huvudprogrammet) enligt nedanstående.
+ Programmet ger en viss vägledning om respektive funktions returtyp och parametrar. Alla förekomster av ... ska bytas ut eller tas bort så att programmet blir korrekt.
+
+#include <iostream>
+using namespace std;
+
+// Deklarationer av funktionerna
+...
+
+// Globala variabler, dvs att deklarera 
+// variabler utanför funktionerna är ej tillåtet
+
+int main()
+{  
+  // Här ska deklaration av variabler finnas
+  ...
+  
+  ... skrivInfo( ... );
+
+  tal1 = lasEttTal(...);
+
+  tal2 = lasEttTal(...);
+
+  op = lasOp(...);
+
+  ordna(...);
+
+  svar = berakna(...);
+
+  skrivResultat(...);
+
+  return 0;
+}
+// Definitioner av funktionerna
+ 
+
+Anmärkningar
+Funktionerna skall deklareras och definieras.
+Utskrifter får endast ske i skrivInfo och skrivResultat. Ledtexter (som hjälp för inmatning) får skrivas ut i lasEttTal och lasOp.
+Inläsning får endast ske i lasEttTal och lasOp.
+Tänk på att multiplikationsberäkningen kan ge väldigt stora tal som kanske ej ryms i en variabel.
+Det är frivilligt (men lärorikt) att göra kontroller av att användaren anger en giltig beräkningstyp.
+OBS! Du får inte använda arrayer eller pekare i denna uppgift. Detta kommer senare i kursen.
+ 
+
+Testdata 1-7 (8)
+Läs in talen 3 och 5 samt välj addition. Svaret skall bli 12, eftersom (3)+(4)+(5)=12.
+Läs in talen 3 och 5 samt välj multiplicera. Svaret skall bli 60, eftersom (3)*(4)*(5)=60.
+Läs in talen 3 och 5 samt välj kvadratsumma. Svaret skall bli 50, eftersom (3*3)+(4*4)+(5*5)=50.
+Läs in talen -3 och 5 samt välj multiplicera. Svaret skall bli 0, eftersom (-3)*(-2)*(-1)*(0)*(1)*(2)*(3)*(4)*(5)=0.
+Läs in talen 5 och 3 samt välj addition. Svaret skall bli 12, eftersom (3)+(4)+(5)=12.
+Läs in talen -3 och -5 samt välj addition. Svaret skall bli -12, eftersom (-5)+(-4)+(-3)=-12
+Läs in talen 1 och 100 samt välj kvadratsumma. Svaret skall bli 338350.
+Frivillig uppgift: Läs in talen 1 och 1000 samt välj multiplicera. Kommentera resultatet.
+ 
+
+Tips på lösningsmetodik
+Lös uppgiften bit för bit, dvs skriv en funktion i taget och testa den tills den fungerar.
+
+Börja med att skriva funktionen skrivInfo. Fundera på returtyp, parametrar och funktionens övriga delar.
+För att bara testa den funktionen kan du kommentera bort alla delar i det givna programmet som ej har att göra med funktionen skrivInfo. Utgå då från följande program:
+// Program för att testa funktionen skrivInfo
+
+#include <iostream>
+using namespace std; 
+
+//Deklarationer av funktionerna
+
+// Bara skrivInfo t.v.
+int main(){
+  
+  // Här ska deklarationer av variabler finnas
+  ...
+  
+  ... skrivInfo(...);  // Den enda funktion som anropas
+
+
+  //tal1= lasEttTal(...); // Bortkommenterat anrop
+  
+  //tal2= lasEttTal(...); // Bortkommenterat anrop
+  
+  //op=   lasOp(...);     // Bortkommenterat anrop
+  
+  //ordna(...);          //Bortkommenterat anrop
+  
+  //svar= berakna(...);   // Bortkommenterat anrop
+  
+  //... skrivResultat(...); // Bortkommenterat anrop
+  
+  return 0;
+  
+}
+
+//Definitioner av funktionerna
+
+// Bara skrivInfo t.v.
+Testkör och se vad som händer. Modifiera koden tills du blir nöjd.
+Bygg på programmet ovan genom att skriva funktionen lasEttTal. Fundera på returtyp, parametrar och funktionens övriga delar.
+Ta bort kommentarerna (avkommentera) på den rad i main där det första anropet av funktionen sker. 
+För att få bekräftat att main får ett korrekt värde från funktion bör du lägga in en testutskrift i main enligt
+tal1= lasEttTal(...);
+
+cout << "Testutskrift av värde från lasEttTal:" << tal1 << endl;
+
+//tal2= lasEttTal(...)
+Testkör och se vad som händer. Modifiera koden tills det fungerar.
+Modifiera sedan main så att det läser in två tal:
+tal1 = lasEttTal(...);
+cout << "Testutskrift av värde från lasEttTal:" << tal1 << endl;
+
+tal2 = lasEttTal(...);
+cout << "Testutskrift av värde från lasEttTal:" << tal2 << endl;
+Bygg på programmet genom att skriva funktionen lasOp. För att testa funktionen måste du avkommentera den rad main där anropet till funktionen sker. Bekräftelse på att det fungerar får du genom att lägga in en testutskrift i main enligt:
+tal1 = lasEttTal(...);
+tal2 = lasEttTal(...);
+
+op = lasOp(...);
+cout << "Testutskrift av värde från lasOp:" << op << endl;
+Bygg på programmet genom att skriva funktionen ordna. Testa med följande main:
+tal1 = lasEttTal(...);
+tal2 = lasEttTal(...);
+op = lasOp(...);
+
+// ordna skall ta in tal1 och tal2
+ordna(...);
+
+// ordna ger tillbaks värden...
+// Skriv ut värdena för att veta vad den ger tillbaks
+...
+Prova med lite olika värden på tal1 och tal2.
+Fortsätt med att skriva funktionen berakna, men tag en del i taget. Börja med den enklaste beräkningen, exempelvis addition av tal och få det att fungera. Testa med följande main:
+tal1 = lasEttTal(...);
+tal2 = lasEttTal(...);
+op = lasOp(...);
+ordna(...);
+
+svar = berakna(...); // berakna kan bara utföra addition
+cout << "Testutskrift av värde från berakna:" << svar << endl;
+Tips: Om funktionen ger ett felaktigt värde till main, lägg in testutskrifter av de variabler du använder i funktionen. Kontrollera att värdena är korrekta.
+Modifiera sedan funktionen så att den klarar kvadratsummering och testkör.
+Lägg därefter till de satser som behövs för multiplikationen och testkör.
+Avsluta med att skriva och testa funktionen skrivResultat.
+Programmet skall fungera för alla testdata 1-7.
+När programmet är testat och klart kan du ta bort alla kvarvarande testutskrifter innan du skall redovisa uppgiften.

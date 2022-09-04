@@ -1,0 +1,104 @@
+Klasser
+1.
+Skriv ett program för temperaturomvandling. Skriv allt i samma fil, men ha strukturen: klassdefinition, huvudprogram, metodimplementation.
+
+Skapa en klass temperatur enligt följande
+
+class  temperatur
+{
+private:
+  double grader;        // i Celsius.
+  
+public:
+  temperatur();         // default-konstruktor
+  temperatur(double t); // överlagrad konstruktor 
+  void lasin();         // inläsning av grader
+  void skriv();         // utskrift av grader
+  double haemta_grader();        // returnerar grader
+  double skillnad(temperatur t); // skillnaden mellan 2
+  double fahrenheit();           // return. i Fahrenheit
+  void rapport();                // skriver "rapport"
+};
+Skriv ovan nämnda metoder i klassen temperatur.
+
+Sambandet mellan Celsius-grader (c) och Fahrenheit-grader (f) ges av:
+
+f = 32 + 1.8*c
+
+Metoden rapport ska skriva ut ett av följande uttryck:
+
+Oh! Vad varmt det är idag!
+Oh! Vad kallt det är idag!
+Det är lagom varmt idag.
+beroende på om temperaturen är större än 15 grader, mindre än 5 grader, eller mellan 5 och 15 grader.
+
+Skriv ett huvudprogram som använder metoderna i klassen ovan.
+
+2. 
+Utvidga klassen temperatur
+Utvidga klassen temperatur så att den får ett nytt attribut typ som skall vara en sträng och kan anta värden Celsius eller Fahrenheit. 
+Gör om alla metoderna så att de tar hänsyn till det nya attributet.
+
+Kommentarer:
+
+1. I metoden skillnad ska du först kolla att de två inblandade objekten har samma enhet, dvs samma värden på sina typ-attribut, innan differensen beräknas och returneras.
+2. I metoden fahrenheit ska du konvertera till Fahrenheit om grader är givna i Celsius, annars bara returnera grader utan konvertering.
+3. Metoden rapport ska vara deklarerad så här:
+void temperatur::rapport( int nedre, int oevre )
+dvs kontrollera om temperaturen är större än oevre grader, mindre än nedre, eller mellan nedre och oevre grader och skriv ut lämplig text.
+
+3.
+A. Lägg till utskrift
+För att få lite mer klarhet i när/hur konstruktorer används, så kan man lägga in utskriftssatser i dessa, t ex skriva
+cout << "Jag är default-konstruktor: "
+     << "grader = " << grader << endl;
+respektive
+cout << "Jag är överlagrad konstruktor: "
+     << "grader = " << grader << endl;
+Prova! Kompilera och testkör igen!
+ 
+B. När man programmerar objekt som innehåller pekare, så måste man även ha en destruktor i klassen. 
+Man kan också annars ha en destruktor som inte gör någonting mer än skriver ut text, bara för att se i vilken ordning som objekt dödas. 
+Dvs lägg till följande destruktor till din temperatur-klass:
+temperatur::~temperatur()
+{
+  cout << "Nu dödas objekt med temperatur = "
+       << grader << endl;
+}
+
+OBS! Du skall inte lägga till något extra i main.
+Beroende på vilka metoder du använder i main, så kan det se ut som att olika antal objekt skapas och döda. 
+Detta beror på att en s k kopieringskonstruktor ("copy constructor") skapar objekt ibland lite "bakom kulisserna".
+
+4.
+Byt ut huvudprogrammet i uppgift 2
+Fortsätt på programmet du skapade i uppgift 2, men byt ut hela huvudprogrammet mot ett som innehåller en array juli2002 av sju temperatur-objekt. 
+Har du inget program att utgå ifrån, så titta i lösningsförslaget till uppgift 2.
+
+Skapa arrayen och andra variabler som behövs.
+Skriv lite ledtext till användaren.
+Läs in vilken typ (Celsius eller Fahrenheit).
+Gör en loop och fyll på värden i arrayen, dvs läs antal grader, skapa objekt med rätt typ och grad och tilldela till arrayobjekt.
+Gör ny loop och skriv ut information om alla objekt i arrayen. Resultatet kan se ut så här (användarens inmatning i fet stil):
+
+Fahrenheit eller Celsius?
+Celsius
+Ge sju st medeltemperaturer i angiven enhet:
+15 19 17 22 34 22 21 
+Nu testar vi att skriva ut alla i vacker tabell
+Temperaturen är 15 grader Celsius.
+Det är lagom varmt idag.
+Temperaturen är 19 grader Celsius.
+Det är lagom varmt idag.
+Temperaturen är 17 grader Celsius.
+Det är lagom varmt idag.
+Temperaturen är 22 grader Celsius.
+Oh! Vad varmt det är idag.
+Temperaturen är 34 grader Celsius.
+Oh! Vad varmt det är idag.
+Temperaturen är 22 grader Celsius.
+Oh! Vad varmt det är idag.
+Temperaturen är 21 grader Celsius.
+Oh! Vad varmt det är idag.
+Själva klassen skall ej ändras, dvs inga nya attribut och metoder behövs.
+

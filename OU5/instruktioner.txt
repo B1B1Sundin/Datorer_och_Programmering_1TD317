@@ -1,0 +1,121 @@
+Deluppgift A
+Ladda hem programskalet till deluppgift A, programskal_Inlupp5A.cpp.
+Där finns ett litet huvudprogram som ska kunna användas av din klass.
+
+Skriv en klass Text som har tre attribut:
+
+- den textsträng som ska analyseras
+- en array som kan innehålla det absoluta histogrammet. 
+Längden på arrayen ska vara antalet bokstäver, alltså 26.
+	Använd gärna samma globala konstant som i Inlämningsuppgift 4 istället för siffran 26. Viktigt: Arrayen ska vara av typen int.
+- ett attribut som håller reda på antalet bokstäver i histogrammet.
+
+Klassen ska också ha
+
+- Text(), En standardkonstruktor
+- void setText( const string &nyText ), En metod som sätter värdet på textsträngen i klassen.
+- bool beraknaHistogramAbs(), En metod som beräknar histogrammet av texten. Metoden ska också beräkna antalet bokstäver i histogrammet. 
+	En bool-variabel returneras som är true om det finns bokstäver i histogrammet, annars false.
+- void skrivHistogramAbs(), En metod som skriver ut ett bokstavshistogram som en tabell med två kolumner: bokstav och bokstavens förekomst som ett heltal.
+
+Histogrammet kan se ut så här:
+A: 5
+B: 8
+C: 0
+D: 4
+...
+
+Tips på lösningsmetodik deluppgift A
+
+Skriv inte hela klassen på en gång. Börja med små bitar.
+
+Skapa en klass med bara attributet som är textsträngen och skriv en standardkonstruktor. 
+Kommentera bort allt i det givna programskalet utom variabeldeklarationerna. 
+Lägg gärna till en liten utskrift i standardkonstruktorn så ser du att den anropas.
+Lägg till de andra attributen till klassen och ändra standardkonstruktorn så att den hanterar också de nya attributen. 
+Tänk igenom vilka startvärden som är lämpliga.
+Skriv metoden setText som sätter ett värde på textsträngen. Ändra i huvudprogrammet så att metoden anropas.
+Fortsätt på samma sätt att lägga till och testa de metoder som är kvar tills hela deluppgift A är löst.
+
+Testdata och facit
+
+Testdata 1: AbCdNNooPPwXyZ
+Testdata 2: 1234ddddacccbb!?
+Testdata 3: Denna rad innehåller ett å!
+Testdata 4 (en tom rad):
+
+Kontrollera att dina programkörningar ger resultat som motsvarar körningen korningInlupp5A.txt 
+==================================================================================================================================================
+Deluppgift B
+
+I deluppgift B ger vi inget nytt programskal. 
+Du bygger ut klassen som du redan har börjat på och ändrar huvudprogrammet allt eftersom. 
+Klassen ska nu kompletteras för att kunna räkna ut ett relativt histogram samt plotta detta med symboler på samma sätt som i Inlämningsuppgift 4. 
+Det relativa histogrammet ska också jämföras med fördefinierade histogram för olika språk.
+
+Följande attribut ska läggas till i klassen:
+
+- en array som kan innehålla det relativa histogrammet.
+
+Följande metoder ska läggas till i klassen:
+
+- void absTillRel(), En metod som beräknar det relativa histogrammet från det absoluta. 
+	För varje bokstav anges förekomsten relativt totala antalet bokstäver i histogrammet.
+
+- void plottaHistogramRel(), En metod som plottar det relativ histogrammet på samma sätt som i Inlämningsuppgift 4, med symboler. 
+	En procent ska motsvaras av två symboler.
+
+- void beraknaHistogram(), Den här metoden gör inga nya beräkningar av histogrammet men den ska anropa de båda funktionerna beraknaHistogramAbs samt absTillRel. 
+	Det absoluta histogrammet ska beräknas först i funktionen och sedan det relativa. Fundera på hur anropen till funktionerna ska se ut inne i beraknaHistogram. 
+	Det relativa histogrammet ska endast beräknas om det finns bokstäver i det absoluta histogrammet.
+
+- string tolka(), En metod för att jämföra ett beräknat relativt histogram med fyra fördefinierade språkhistogram samt bestämma vilket språk den ursprungliga texten mest troligt är skriven på.
+	Metoden ska returnera resultatet, t ex svenska, som en string.
+
+Inläsning av filnamn ska ske på samma sätt som i Inlämningsuppgift 4. 
+Du kan alltså använda de redan skrivna funktionerna namn_pa_fil och inlasning även i detta program utan att modifiera dem. 
+Notera att de ska deklareras och definieras precis på samma sätt som i Inlämningsuppgift 4, och inte ska ingå i klassen.
+
+Tips på lösningsmetodik deluppgift B
+
+1. Klipp in funktionerna namn_pa_fil och inlasning från Inlämningsuppgift 4 på lämpligt ställe i programmet. 
+	Funktionsdeklarationerna kan du placera mellan klassdeklarationen och huvudprogrammet. 
+	Implementationerna kan du lägga sist, efter implementationen av klassen.
+
+2. Lägg till inläsning av filnamn i huvudprogrammet. 
+	Lägg också till inläsning av filinnehållet till en sträng.
+
+3. Anropa funktionen setText med den inlästa strängen som inparameter. 
+	Anropa sedan beraknaHistogramAbs samt skrivHistogramAbs. Om du testkör med litenFil.txt  
+	Ladda ner litenFil.txtkan du kontrollera om resultatet stämmer med skrivHistogramLitenFil.txt.
+	Lägg till attributet som innehåller det relativa histogrammet till klassen. 
+	Uppdatera standardkonstruktorn så att också det nya histogrammet hanteras.
+
+4. Skriv metoden absTillRel. Lägg till en rad i huvudprogrammet som anropar metoden.
+
+5. Skriv metoden plottaHistogramRel. Lägg till en rad i huvudprogrammet som anropar metoden. 
+	Kontrollera om resultatet stämmer med plottaHistogramLitenFil.txt.
+
+6. Skriv metoden beraknaHistogram. Ta bort anropen av beraknaHistogramAbs och absTillRel i huvudprogrammet och anropa istället beraknaHistogram. 
+	Gör testkörningar igen och se att rätt resultat fortfarande skrivs ut.
+
+7. Skriv metoden tolka, anropa den sedan från huvudprogrammet. 
+	Kontrollera om resultatet stämmer med tolkningLitenFil.txt  Ladda ner tolkningLitenFil.txt.
+
+Testdata och facit
+
+Programmet skall köras med fem testdata genom att ange fem olika filnamn. 
+Fyra av filerna representerar de fyra språken engelska, tyska, svenska och franska som du laddar (kopierar) ner till den katalog där du startar programmet. 
+Den femte programkörningen skall visa att programmet hanterar fallet när den inmatade filen ej existerar (då skall programmet avslutas direkt).
+
+Testdata:
+doyle.txt  Ladda ner doyle.txt- engelska (filens namn skall vid programkörningen anges utan .txt).
+goethe.txt  Ladda ner goethe.txt- tyska (filens namn skall vid programkörningen anges med .txt).
+lagerlof.txt  Ladda ner lagerlof.txt- svenska (filens namn skall vid programkörningen anges utan .txt).
+verne.txt  Ladda ner verne.txt- franska (filens namn skall vid programkörningen anges med .txt).
+Mata in en fil som ej existerar.
+Vid programkörningarna används filnamn med och utan .txt. 
+Läs därför in filnamnen doyle (testdata 1), goethe.txt (testdata 2), lagerlof (testdata 3) och verne.txt (testdata 4).
+
+"Facit":
+Facit för testdata 1 och 5 finns i korningInlupp5B.txt

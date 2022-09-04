@@ -1,0 +1,119 @@
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): 3
+Skriv in ett tal (int): 5
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): a
+Resultat: 12
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): 3
+Skriv in ett tal (int): 5
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): m
+Resultat: 60
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): 3
+Skriv in ett tal (int): 5
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): k
+Resultat: 50
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): -3
+Skriv in ett tal (int): 5
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): m
+Resultat: 0
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): 5
+Skriv in ett tal (int): 3
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): a
+Resultat: 12
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): -3
+Skriv in ett tal (int): -5
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): a
+Resultat: -12
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ ./a.out 
+Välkommen! Programmet kommer att läsa in två tal(int). 
+Beroende din valda beräkning (a, m eller k), så kommer alla tal fr o m det minsta t o m det största av dem summeras, multipliceras eller kvadratsummeras.
+ 
+ - För a & b och operand 'a' -> a + (a+1) + (a+2) ... + b
+ - För a & b och operand 'm' -> a * (a+1) * (a+2) ... * b
+ - För a & b och operand 'k' -> a*a + (a+1)*(a+1) + (a+2)*(a+2) +  ... + b*b
+
+Skriv in ett tal (int): 1
+Skriv in ett tal (int): 100
+
+a - Addera tal
+m - Multiplicera tal
+k - Beräkna kvadratsumman av tal
+
+Skriv in någon av dessa operander (char): k
+Resultat: 338350
+yohanna@Yohannas-MacBook-Air ~/Code/1TD317/OU3 $ 

@@ -1,0 +1,135 @@
+Deluppgift B
+För att lösa uppgiften skall du använda ett programskal som innehåller början på ett program. 
+Där finns bl a en fördefinierad struktur med olika språks bokstavshistogram. Programskalet ska du komplettera med egna funktioner. 
+Vilka parametrar dessa funktioner ska ha, eller vad de eventuellt ska returnera får du bestämma själv. 
+Den enda utförande kod själva huvudprogrammet skall innehålla är anrop av de fem funktionerna (men naturligtvis får det finnas någon if-sats och return 0; i huvudprogrammet).
+
+Ladda ner (kopiera) programskalet till deluppgift B, programskal_Inlupp4B.cpp  
+
+Funktionerna som måste finnas i programmet:
+
+berakna_histogram_abs(...)
+Detta är den funktion som gjordes i deluppgift A. Återanvänd samma funktion i deluppgift B.
+
+abs_till_rel(...)
+Ett histogram kan också representeras i relativa frekvenser, d v s hur stor andel av texten som utgörs av en specifik bokstav. För varje bokstav anges förekomsten relativt totala antalet bokstäver i histogrammet. Arrayen innehåller då värden mellan 0.0 och 100.0% för varje bokstav, där den totala summan för alla bokstäver är 100.0%.
+Funktionen ska ta ett histogram med absoluta värden och räkna om dessa till relativa värden.
+
+plotta_histogram_rel(...)
+Funktionen skall rita ut ett bokstavshistogram, genom att skriva ut varje bokstav och förekomsten av denna bokstav i form av ett antal symboler, t ex '*'. Det ritade histogrammet ska bestå av en kolumn med alla bokstäver och till höger om dessa ska det vara rader med symboler, där antalet symboler motsvarar den procentuella andelen tecken i strängen.
+En procent ska motsvaras av två symboler.
+
+Exempel: Om förekomsten är A 3%, B 0.7%, C 1.5%, D 0.3% osv kan resultatet bli följande (med trunkering efter att den procentuella andelen har delats med 0.5):
+
+A ******
+B *
+C ***
+D
+
+Man kan också tänka sig följande resultat (med avrundning till närmaste 0.5%):
+
+A ******
+B *
+C ***
+D *
+
+tolkning(...)
+Funktionen skall jämföra ett beräknat histogram med fyra fördefinierade språks histogram och sedan bestämma vilket språk den ursprungliga texten troligtvis är skriven på.
+I programskalet finns en fördefinierad 2-dimensionell array TOLK_HJALP med bokstavshistogram för fyra olika språk (i ordningen engelska, franska, svenska, tyska).  Arrayen består av 4x26 element (relativa frekvenser) motsvarande fyra språk ggr 26 bokstäver (a-z).
+
+För att jämföra ett beräknat histogram med något av de givna språkens histogram, ska man för varje bokstav beräkna skillnaden vad gäller deras förekomst, kvadrera dessa skillnader (dvs skillnad*skillnad) och summera de kvadrerade skillnaderna för alla bokstäver.
+
+Ett exempel:
+
+Om bokstavsfrekvensen för ett känt språk (1) för bokstäverna A, B, C, resp D är 3.0%, 0.7%, 0.3% och 1.5%:
+bokstavsfrekvens 1 = (3.0, 0.7, 0.3, 1.5) // Facit för språket (1)
+Antag att du läser in en text som ger följande bokstavsfrekvenser för bokstäverna A, B, C, resp D är 3.1%, 0.8% 0.5% och 1.3%
+
+bokstavsfrekvens 2 = (3.1, 0.8, 0.5, 1.3) // Texten
+"Skillnaden" mellan bokstavsfrekvenserna uttrycks som en kvadratsumma:
+
+Kvadratsumman = (3.0-3.1)(3.0-3.1) + (0.7-0.8)(0.7-0.8) +
+(0.3-0.5)(0.3-0.5) + (1.5-1.3)(1.5-1.3) = 0.1
+Ju mindre en kvadratsumma är, desto mer lika är det beräknade histogrammet och det jämförda språket. En kvadratsumma för varje språk skall alltså beräknas och det språk motsvarande den minsta kvadratsumman anses vara det mest troliga språket.
+
+Funktionen skall skriva ut kvadratsumman för de fyra språken och dessutom vilket av dem som är det mest troliga språket.
+
+Tips, se Arrayer -> Övningar uppgift 6.
+
+namn_pa_fil(...)
+Funktionen ska låta användaren läsa in ett filnamn som en sträng och kontrollera om det är korrekt. Om filnamnet slutar på .txt är det korrekt, annars måste ett korrekt filnamn skapas genom att strängen .txt läggs till sist i filnamnet. 
+Filen med det korrekta namnet kommer sedan (i huvudprogrammet) att läsas in till programmet (med hjälp av funktionen inlasning, se nedan).
+Meningen är att programmet bara ska läsa filer vars namn slutar med de fyra tecknen .txt (t ex testfil.txt). 
+Användaren skall dock själv bestämma om denne vill skriva med .txt eller helt utan detta i filnamnet.
+Tips: Enklast och smidigast blir det om man använder sig av .rfind() och .append() (finns i string). (Man kan använda .find() också men det finns risk för fel om filnamnet "min.txt-fil" anges.)
+
+inlasning(...)
+Funktionen läser in en fil och sparar texten i filen i en sträng. Namnet på filen som ska läsas har angetts av användaren tidigare (m h a funktionen namn_pa_fil). Funktionen ska kunna hantera fallet att filen inte finns, vilket också ska hanteras i huvudprogrammet. Tips: Ett sätt att gå till väga är att använda funktionen .get() som finns i ifstream, för att läsa filen tecken för tecken och lägga till varje tecken sist i en sträng. För att lägga till ett tecken sist i string kan du använda metoden .push_back(char).
+ 
+
+Tips på lösningsmetodik deluppgift B
+
+Lös varje delproblem separat i enkla testprogram. Vartefter som delproblemen löses byggs programmet på med lösningen på nästa delproblem, etc.
+
+Förslag 1
+
+Börja med att bara läsa en textrad från tangentbordet och beräkna histogrammet, dvs använd ej funktionen inlasning som läser från fil:
+Börja med att använda funktionen berakna_histogram_abs som i uppgift A med text från tangentbordet.
+I huvudprogrammet: Läs en textrad från tangentbordet. Anropa den redan uttestade och fungerande berakna_histogram_abs.
+Skriv och testa funktionen abs_till_rel:
+I huvudprogrammet: Läs en textrad från tangentbordet. Anropa den redan uttestade och fungerande berakna_histogram_abs och anropa sedan abs_till_rel.
+Skriv och testa funktionen plotta_histogram_rel:_
+I huvudprogrammet: Läs en textrad från tangentbordet. Anropa (de fungerande) funktionerna berakna_histogram_abs och abs_till_rel och anropa sedan plotta_histogram_rel.
+Skriv och testa funktionen tolkning:
+I huvudprogrammet: Läs en textrad från tangentbordet. Anropa (de fungerande) funktionerna berakna_histogram_abs, abs_till_rel och plotta_histogram_rel. Anropa sedan tolkning. Försök verifiera att funktionen fungerar genom att mata in en lämplig (kort) textrad i något språk. Exvis en rad från respektive given språkfil, se nedan. Eller hämta någon text från Internet eller från någon bok i din bokhylla. De fyra kvadratsummorna kan du med viss möda räkna ut "för hand" och jämföra med din funktions resultat.
+Sedan är det dags att läsa texten från fil:
+Ladda hem filen litenFil.txt  Ladda ner litenFil.txtsom du kan använda medan du utvecklar ditt program. Den består av en (ganska tråkig) rad med text. Alternativt skapa en egen fil med ganska lite innehåll.
+Skriv och testa funktionen inlasning med ett fixt namn på en fil, exempelvis litenFil.txt. Filen måste existera i den katalog (mapp) där du startar programmet. Anropa sedan de fungerande berakna_histogram_abs, abs_till_rel, plotta_histogram_rel och tolkning.
+Testa sedan med att läsa in texter från de givna språkfilerna (se nedan om testdata). Exempelvis: doyle.txt  Ladda ner doyle.txt.
+Skriv och testa funktionen namn_pa_fil:
+
+Denna funktion testas lämpligen ej tillsammans med några av de andra funktionerna ovan till att börja med, utan i ett separat litet testhuvudprogram.
+Testa namn_pa_fil tillsammans med alla de andra funktionerna i ett komplett program.
+
+Förslag 2
+
+Börja med att skriva funktionerna för att läsa filnamn och läsa från fil
+
+- - Skriv och testa funktionen namn_pa_fil. Funktionen testas enklast i ett separat litet testhuvudprogram.
+Ladda hem filen litenFil.txt  Ladda ner litenFil.txt som du kan använda medan du utvecklar ditt program. Den består av en (ganska tråkig) rad med text. 
+Alternativt skapa en egen fil med ganska lite innehåll.
+
+- Skriv och testa funktionen inlasning(). Till en början kan du ha ett fixt filnamn i programmet, litenFil.txt. 
+När det fungerar kan du gå över till att också använda funktionen namn_pa_fil för att läsa in filnamnet.
+Skriv filerna för att beräkna och plotta histogram
+
+- Använd funktionen berakna_histogram_abs() på texten som har lästs in från fil.
+  Ett bra tips är att fortsätta använda litenFil.txt ett tag till eftersom den innehåller en relativt kort sträng.
+  Anropa funktionen skriv_histogram_abs och se att resultatet överensstämmer med skrivHistogramLitenFil.txt  Ladda ner skrivHistogramLitenFil.txt.
+
+- Skriv och testa funktionen abs_till_rel. Anropa den från huvudprogrammet.
+
+- Skriv och testa funktionen plotta_histogram_rel. Anropa den från huvudprogrammet. Se om resultatet överensstämmer med plottaHistogramLitenFil.txt  
+  Ladda ner plottaHistogramLitenFil.txt(vi har använd trunkering i lösningen, om du har avrundning kan det skilja sig lite).
+
+- Skriv och testa funktionen tolkning. Lägg till anropet av funktionen i huvudprogrammet. 
+För litenFil.txt ser resultatet ut så här tolkningLitenFil.txt  Ladda ner tolkningLitenFil.txt.
+
+Testdata och facit
+
+Programmet skall köras med fem testdata genom att ange fem olika filnamn. 
+Fyra av filerna representerar de fyra språken engelska, tyska, svenska och franska som du laddar (kopierar) ner till den katalog där du startar programmet. 
+Den femte programkörningen skall visa att programmet hanterar fallet när den inmatade filen ej existerar (då skall programmet avslutas direkt).
+Testdata:
+doyle.txt  Ladda ner doyle.txt- engelska (filens namn skall vid programkörningen anges utan .txt).
+goethe.txt  Ladda ner goethe.txt- tyska (filens namn skall vid programkörningen anges med .txt).
+lagerlof.txt  Ladda ner lagerlof.txt- svenska (filens namn skall vid programkörningen anges utan .txt).
+verne.txt  Ladda ner verne.txt- franska (filens namn skall vid programkörningen anges med .txt).
+Mata in en fil som ej existerar.
+Vid programkörningarna används filnamn med och utan ".txt". 
+Läs därför in filnamnen doyle (testdata 1), goethe.txt (testdata 2), lagerlof (testdata 3) och verne.txt (testdata 4).
+
+"Facit":
+Facit för testdata 1 och 5 finns i korning_Inlupp4B.txt  Ladda ner korning_Inlupp4B.txt. Dina programkörningar bör överensstämma med facit.
+
+För mer tips, Klicka på länken Inlämningsuppgift 4 - Mera tips.

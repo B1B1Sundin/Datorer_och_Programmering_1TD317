@@ -1,0 +1,89 @@
+1.
+Hund och matte
+I filen HundMatte0.cpp finns klasserna Hund och Matte. 
+Hundens ägare, dvs matten, "känner till" sin hund, men inte hunden sin matte.
+
+Kod för huvudprogrammet:
+
+int main()
+{
+  Matte matte1( "Matilda" );
+  Hund *hund1_p;                    // Pekare till hund.
+  hund1_p = new Hund( "Fido", 15 ); // Skapa Fido.
+
+  cout << "Lite startinfo:" &lt;&lt; endl;
+  hund1_p->skriv(); cout << endl;
+  matte1.skriv();   cout << endl;
+
+  cout << "Matilda kopplar Fido" << endl;
+  matte1.kopplaHund( hund1_p );
+
+  cout << "Fido blir knubbigare" << endl;
+  hund1_p->nyvikt( 25 );
+
+  matte1.skriv();   cout << endl; 
+  hund1_p->skriv(); cout << endl;
+  return 0;
+}
+
+Körexempel:
+
+Lite startinfo:
+hund heter Fido och väger 15
+(har ingen matte ännu!, fast matte kanske tror det!)
+Matilda  har ingen hund...
+Matilda kopplar Fido
+Fido blir knubbigare
+Matilda hund heter Fido och väger 25
+(har ingen matte ännu!, fast matte kanske tror det!)
+hund heter Fido och väger 25
+(har ingen matte ännu!, fast matte kanske tror det!)
+
+Du skall komplettera filen så att klassen Hund känner till Matte också. 
+När en matte kopplar sin hund, så måste hunden koppla sin matte också (dvs referera till matte via pekare).
+
+OBS! Var försiktig, annars kan du råka ut för rundgång, dvs om skriv-metoden i Matte använder skriv-metoden i Hund, så blir det "rundgång". 
+Prioritera så att mattar är viktigare än hundar.
+
+Så här kan körning se ut med samma huvudprogram som i originalfilen (dvs som ovan):
+
+
+Lite startinfo:
+hund heter Fido och väger 15
+ är en herrelös hund, har ingen matte.
+Matilda  har ingen hund...
+Matilda kopplar Fido
+Fido blir knubbigare
+Matilda hund heter Fido och väger 25
+ har matte = Matilda 
+hund heter Fido och väger 25
+ har matte = Matilda 
+ 
+
+Anmärkning: I det här exemplet behöver vi inte kopieringskonstruktor och destruktor, eftersom vi inte gör new och delete i konstruktorer och metoder, utan bara i main. 
+Dessutom har vi slarvat lite eftersom vi inte lämnat tillbaka minne som allokerades tidigare. 
+Det händer inget farligt eftersom minnet lämnas tillbaka då programmet slutar (när operativsystemet städar upp efter main-funktionen är klar), men egentligen skall man vara noga med sådant "städjobb"!
+
+2.
+Listor och listklasser
+I filen ExtArray0.cpp finns kod för en dynamisk, tänjbar array. 
+Lägg till följande extrametoder:
+bool empty() som returnerar true om listan är tom, annars returneras false.
+void append( ExtArray other ) som tar listan other och lägger in direkt efter sista elementet i aktuella listan.
+Ändra i main.
+
+3.
+I filen ExtArray1.cpp  (lösningsförslag till uppgift 2) finns kod för en dynamisk tänjbar array. 
+Utvidga klassen ExtArray så att följande metoder finns:
+
+int last() som returnerar värdet på sista index.
+int value( int index ) som returnerar värdet på plats index i listan.
+
+Testa dem i huvudprogrammet.
+Skriv även följande "vanliga funktioner" (använd value, change, last):
+
+int sum ( ExtArray & v ) som beräknar och returnerar summan av elementen i listan. Här har vi referensparameter för att slippa anrop till kopieringskonstruktorer.
+void kvadrera( ExtArray & v ) som ändrar i listan så att varje element kvadreras.
+
+Testa dem i huvudprogrammet.
+

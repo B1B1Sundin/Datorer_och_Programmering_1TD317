@@ -1,0 +1,13 @@
+Ladda hem filen "fungerandeTest.cpp"  till en katalog(/OU1) på din dator.
+Ställ dig i samma katalog och kompilera filen för att skapa en körbar programfil. 
+Den här filen ska inte ge upphov till några fel. 
+Eventuella problem att kompilera beror på att allt inte fungerar med kompilatorn. 
+Försök i så fall lösa problemet med hjälp av diskussionsforumet Teknik. När kompileringen fungerar: kör programmet.
+
+Ladda hem filen annatTest.cpp  Ladda ner annatTest.cpp och kompilera. 
+Den här filen bör ge upphov till kompileringsfel.
+Försök att lista ut vad det är för fel i koden och rätta till felet. 
+Kompilera igen tills du har hittat felet och fått koden rätt.
+Testkör programmet. Skriv en väldigt kort "rapport" om vad som var problemen direkt inlämningsfunktionen. 
+Du kan skriva i en egen fil (Word, text eller liknande) och ladda upp i inlämningen. 
+Om du använder Word, spara som pdf och ladda upp pdf-filen.

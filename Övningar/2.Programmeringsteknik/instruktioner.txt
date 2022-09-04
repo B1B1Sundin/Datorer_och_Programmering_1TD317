@@ -1,0 +1,59 @@
+1. 
+Heltalsdivision
+Skriv ett program som läser in två heltal (variabeln tal1 respektive tal2).
+Beräkna sedan tal1/tal2 och float(tal1)/tal2 samt skriv ut resultaten.
+Testa programmet med lite olika värden på tal1 och tal2,
+t ex 3 och 4, 5 och 3, -3 och 4, samt 5 och 0.
+
+Vad blir resultatet? Och varför?
+- Eftersom det är int så kommer värdet att avrundas nedåt till närmsta heltal.
+Spara programmet som ovning_2_2.cpp
+
+2.
+Typkonvertering mellan heltal och flyttal
+Skriv ett program som läser in ett flyttal (variabeln flyttal) från tangentbordet och lagrar det sedan som ett heltal (variabeln heltal), 
+dvs tilldela heltalsvariabeln värdet av flyttalsvariabeln. Programmet skall sedan skriva ut heltalet.
+Prova programmet genom att läsa in några olika flyttal, t ex:
+3.3, 3.7, -4.2, -4.7, 1.6e+4, 1.4e+4 och 1.4e-4.
+
+Vad blir resultatet och varför?
+- Eftersom uppgiften inte specifierar att avrunda så kommer flyttalet automatiskt avrunda nedåt till närmsta heltal när man typkonverterar float till int. 
+Spara programmet som ovning_2_3.cpp
+
+3.
+Avrundning
+Modifiera programmet ovan så att det avrundar det inlästa talet till ett heltal
+Programmet ovan utför s k trunkering, dvs decimalerna kastas bort. Modifiera det så att det avrundar till ett heltal.
+
+Testa programmet genom att läsa in några olika flyttal, t ex 3.3, 3.7, 1.6e+4, 1.4e+4 och 1.4e-4.
+
+Prova sedan att läsa in -4.2 och -4.7.
+
+Vad händer och varför?
+Spara programmet som ovning_2_4.cpp
+
+4. 
+Typkonvertering mellan heltal och tecken:
+Prova att köra följande program:
+   #include <iostream>
+   using namespace std;
+
+   int main()
+   {
+      char tecken, tecken1;
+      int tal;
+      cout << "Mata in ett tecken: " <<endl;
+      cin >> tecken;
+
+      tal = int(tecken); // gör heltal av tecken
+
+      cout << "Heltal av tecken=" << tal<< endl;
+      cout << "Tecken=" << tecken<< endl;
+
+      tecken1 = char(tal+1);  //  gör tecken av heltal
+      cout << "Tecken1=" << tecken1<< endl;
+      return 0;
+   }
+Testa att mata in lite olika tecken, exempelvis bokstäver, siffror eller andra tecken som finns på tangentbordet.
+Vad skrivs ut och varför?
+- Värdet som skrivs ut är värdet av tecknet i ASCII. A - Z (65 - 90) och a - z (97 - 122)

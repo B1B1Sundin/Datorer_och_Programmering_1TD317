@@ -1,0 +1,436 @@
+Uppgift
+Vem skall betala vad?
+Ganska ofta i olika sammanhang händer detta att man lägger ut pengar för andra och att man dessutom ibland låter någon annan lägga ut pengar för en själv. 
+Skriv ett program som samlar ihop en bunt "transaktionskvitton" och reder ut hur mycket var och en skall betala.
+
+OBS! Det måste vara en problemlösning och ett program som är användbart i verkligheten. 
+Man vill undvika att en person skall betala många småsummor till flera andra personer, man vill undvika att en person får massa olika småsummor från flera olika personer.
+
+Enklaste metoden, den s k pottmetoden bygger på att man har en pott (t ex fysiskt en burk på den tiden kontanter användes, nu någon typ av virtuell pott).
+
+- Man räknar ut vad varje person är skyldig de andra personerna totalt (utan att bry sig om vilka som var med och i vilket sammanhang man blev skyldig).
+- Man räknar ut hur mycket varje person har lagt ut åt andra personer totalt (utan att bry sig om vilka som var med vid de olika tillfällena).
+- Man talar man om för alla som är skyldiga andra personer pengar att de skall lägga dem i potten.
+- Man säger åt alla som ligger ute med pengar att hämta dem från potten.
+- Man kollar att det gick jämnt ut :-)
+
+
+Kompisresan till Alperna 
+
+Bakgrund
+Antag att en större grupp goda vänner är på vandrings- och klättersemester i Alperna. 
+De tillbringar ganska många dagar där och gör ibland vandringar och klätterturer tillsammans, men ibland delar de upp sig i mindre grupper. 
+De flyger till Milano, hyr ett par bilar där och kör bil upp till Cortina d'Ampezzo. 
+Vissa dagar gör de turer direkt från campingen där de bor, andra dagar kanske de tar bil till något annat berg eller till Medelhavet för att bada. 
+Det finns restaurang på campingen, så de flesta middagarna intas där.
+
+Exempel: Antag att vi har kompisarna Eva, Paul, Bosse, Stina, Torsten och Kristin som är ute på resa. 
+Eva har betalat allas flygbiljetter (redan den 15/6), tot 6000 kr (bra pris!). De reser den 21 juli och Eva betalade lunchen första dagen för Bosse, Kristin och sig själv. 
+Paul betalade lunchen för Torsten, Stina och sig själv. Väl framme i Milano hyr de två bilar, Bosse blir chaufför för den ena bilen (som Eva, Kristin och Paul alltid är passagerare i) och betalar hyran i förskott.
+Stina blir chaufför i en liten bil, med enbart sin fästman Torsten som alltid är hennes passagerare. Stina betalar denna bilhyra för dem båda.
+
+Sedan startar äventyret upp mot bergstopparna. De gör vandringar och klättringar, tankar sina bilar, äter pizza, ett glas vin och brie på campingen om kvällarna, tar en kall öl på en bergstopp ibland och en glass i Venedig.
+
+De sparar alltid alla sina kvitton (vi kallar dem transaktioner här), t ex står det på varje kvitto följande:
+
+datum - datum för transaktion.
+typ - typ av transaktion, dvs transp (transport som flyg, bilhyra, bensin), mat, boende. Enbart ett ord.
+namn - namn på personen som betalat allt i denna transaktion. Enbart ett ord (förnamn).
+belopp - beloppet som personen med namn namn betalade vid just detta tillfälle.
+antal - antal kompisar som ingår i transaktionen.
+lista av namn - namn på de antal st kompisarna som personen med namn namn skall dela upp belopp på. Enbart ett ord/namn (förnamn).
+ 
+
+Exempel på en fil, resa.txt med flera transaktioner:
+                 
+ 190615  transp  Eva     6000    5       Bosse   Kristin  Paul    Torsten Stina
+ 190721  mat     Eva     300     2       Bosse   Kristin
+ 190721  mat     Paul    400     2       Torsten Stina
+ 190721  transp  Bosse   5000    3       Eva     Kristin  Paul
+ 190721  transp  Stina   5000    1       Torsten
+ 190722  boende  Kristin 200     1       Eva
+ 190722  mat     Eva     300     2       Kristin Bosse
+ 190723  mat     Torsten 300     2       Paul    Stina
+ 190724  mat     Paul    200     1       Stina
+ 190725  transp  Eva     600     3       Bosse   Kristin  Paul 
+
+Till din hjälp har du följande klassdefinitioner enligt uppgiften nedan.
+
+Deluppgift A ###################################################################################################################################################
+
+Klassen Transaktion
+Syftet med klassen är att den skall kunna lagra värden som hör ihop med ett enda kvitto (s k transaktion). 
+Den kommer att användas av klassen TransaktionsLista.
+
+###################################################################################################################################################
+ class Transaktion
+ {
+ private:
+   string datum;
+   string typ;
+   string namn;
+   double belopp;
+   int    antal_kompisar;
+   string kompisar[MAX_PERSONER];
+
+ public:
+   Transaktion();
+   ~Transaktion();
+   string hamtaNamn();
+   double hamtaBelopp();
+   int    hamtaAntalKompisar();
+   bool   finnsKompis(const string &namnet);
+   bool   lasIn(istream &is);
+   void   skrivUt(ostream &os);
+   void   skrivTitel(ostream &os);
+    ...eventuellt div. annat...
+ }; 
+##################################################################################################################################################
+Den statiska arrayen kompisar har storleken MAX_PERSONER med antal_kompisar st element inlagda. 
+MAX_PERSONER ska vara en global konstant.
+
+Metoderna hamtaNamn, hamtaAntalKompisar och hamtaBelopp är s k selektorer, som returnerar motsvarande attributvärden.
+
+Metoden finnsKompis letar igenom arrayen kompisar och returnerar true om namnet finns, annars false.
+
+Metoden skrivUt skriver ut information om ett objekt (dvs "aktuella objektet" tillhörande denna klass), dvs attributens värden, antingen till en fil eller till skärmen. Se körexempel nedan. Metoden skrivTitel skriver ut titeln som beskriver vad som står i kolonner för metoden skrivUt.
+
+Metoden lasIn läser data om en transaktion (kvitto) från tangentbord eller en fil. Denna är av typen bool, eftersom den kan komma att anropas från klassen TransaktionsLista:s metod lasIn med en loop av typen
+
+###################################################################################################################################################
+  // En inläsningsmetod i klassen TransaktionsLista.
+  Transaktion t;
+  
+  // Så länge det går bra att läsa (filen ej slut)
+  while (t.lasIn(is))        
+   {
+     laggTill( t );
+   }
+###################################################################################################################################################
+
+Klassen Person
+Denna klass gör inte så mycket mer än lagrar en persons sammanslagna transaktionsdata, dvs namn, hur mycket personen ligger ute med i pengar för andra samt hur mycket personen är skyldig andra. 
+Denna information beräknas i klassen TransaktionsLista och ges till konstruktorn av denna klass. 
+Eftersom informationen kommer utifrån är utskriftsfunktionen den viktigaste funktionen i klassen.
+
+###################################################################################################################################################
+ class Person
+ {
+ private:
+   string namn;
+   double betalat_andras; // ligger ute med totalt
+   double skyldig;        // skyldig totalt
+
+ public:
+   Person();
+   Person(const string &namn, double betalat_andras, double skyldig);
+   string hamtaNamn();
+   double hamtaBetalat();
+   double hamtaSkyldig();
+   void   skrivUt(ostream &os);
+    ...eventuellt div. annat...
+};
+###################################################################################################################################################
+ 
+
+Här är metoderna hamtaBetalat och hamtaSkyldig s k selektorer som returnerar attributvärden betalat_andras respektive skyldig.
+
+Metoden skrivUt skriver ut personens namn och hur mycket personen ligger ute med samt är skyldig och vad han/hon skall betala till, eller ta ifrån potten (dvs attributen). Det kan t ex se ut så här:
+
+ Stina ligger ute med 2500 och är skyldig 1333.33. Skall ha 1166.67 från potten! 
+ 
+###################################################################################################################################################
+
+Klassen PersonLista
+Syftet med denna klass är att hålla ordning på unika personer som är med i sammanhanget (t ex vår resa), dvs inklusive deras namn och transaktionsdata. 
+Viktigaste metoden är skritUtOchFixa, som talar om vilka som skall ge till potten och vilka som skall ta från potten. 
+Denna metod anropar utskriftsmetoden i Person-klassen.
+
+###################################################################################################################################################
+class PersonLista
+ {
+ private:
+   int    antal_personer;
+   Person personer[MAX_PERSONER];
+
+ public:
+   PersonLista();
+   ~PersonLista();
+   void   laggTill(Person ny_person);
+   void   skrivUtOchFixa(ostream &os);
+   double summaSkyldig();
+   double summaBetalat();
+   bool   finnsPerson(const string& namn);
+    ...eventuellt div. annat...
+ }; 
+###################################################################################################################################################
+
+Den statiska arrayen personer av storleken MAX_PERSONER och har antal_personer st element inlagda. 
+MAX_PERSONER ska vara en global konstant, och vi använder samma som för klassen Transaktion ovan.
+
+Metoden laggTill tar ett personobjekt som inparameter, ny_person, och lägger till i arrayen personer, efter den sista personen.
+
+Metoden skrivUtOchFixa skriver ut information om varje personobjekt i arrayen personer samt kollar att det belopp som personer lägger till potten är lika med det belopp som andra personer tar från potten.
+
+Metoderna summaSkyldig och summaBetalat används för kontrollen i utskriftsmetoden, dvs summan av alla utlägg och summan av alla skulder.
+
+Metoden finnsPerson() returnerar sant om namn finns bland personerna i listan, falskt annars. Används lämpligen i FixaPersoner i TransaktionsLista för att undvika att lagra dubletter.
+
+###################################################################################################################################################
+
+Klassen TransaktionsLista
+
+Syftet med denna klass är att den skall lagra data om många kvitton (transaktioner), t ex läsa många kvitton från en fil, kunna göra vissa operationer på data i dessa, t ex sammanställa totalkostnaden för resan och skapa en s k personlista, dvs lista av personer som varit med på resan (samt ekonomiska data för dessa).
+
+###################################################################################################################################################
+ class TransaktionsLista
+ {
+ private:
+   int         antal_transaktioner;
+   Transaktion transaktioner[MAX_TRANSAKTIONER];
+
+ public:
+   TransaktionsLista();
+   ~TransaktionsLista();
+   void   lasIn(istream & is);
+   void   skrivUt(ostream & os);
+   void   laggTill(Transaktion & t);
+   double totalKostnad();
+   double liggerUteMed(const string &namnet);
+   double arSkyldig(const string &namnet);
+   PersonLista FixaPersoner();
+    ...eventuellt div. annat...
+ }; 
+###################################################################################################################################################
+
+Den statiska arrayen transaktioner är av storlek MAX_TRANSAKTIONER och har antal_transaktioner st element inlagda. 
+MAX_TRANSAKTIONER ska vara en global konstant.
+
+Metoderna lasIn och skrivUt läser in värden till ett TransaktionsLista-objekt från/till fil eller tangentbord/skärm. 
+Använder sig av inläsnings- och utskriftsmetoder i klassen Transaktion.
+
+Metoden laggTill ska lägga till ett nytt transaktionsobjekt sist i arrayen transaktioner.
+
+Metoden totalKostnad beräknar och returnerar summan av alla utgifter på resan (så man kan jämföra olika år och se om det t ex blir dyrare).
+
+Metoden liggerUteMed räknar ut hur mycket en viss person, dvs med namnet namnet har betalat för andra personer och alltså ligger ute med. 
+Detta belopp räknas ut genom att gå igenom alla transaktioner. 
+Det är det viktigt att ta bort den del som personen har betalat för sig själv, vilket i sin tur beror på antal kompiser. Implementeringen skulle kunna se ut så här:
+
+###################################################################################################################################################
+ // En möjlig implementering av liggerUteMed.
+ double TransaktionsLista::liggerUteMed(const string &namn) const
+ {
+   double summa = 0.;
+   for (int i = 0; i < antal_transaktioner; i++)
+     if (transaktioner[i].hamtaNamn() == namn)
+       summa += transaktioner[i].hamtaBelopp() *
+                (1.0 - 1.0 / (transaktioner[i].antalKompisar() + 1));
+   return summa;
+ }
+###################################################################################################################################################
+
+Metoden arSkyldig räknar ut hur mycket en viss person, dvs med namnet namnet är skyldig andra, vilket igen räknas ut genom att gå igenom alla transaktioner och andelen av personen av transaktionen.
+
+Metoden FixaPersoner ska skapa och returnera ett objekt av typen PersonLista genom att gå igenom transaktionslistan och plocka ut alla unika personer som förekommer i transaktionerna. Metoden skall för varje person ta reda på hennes speciella egenskaper (dvs hur mycket pengar hon ligger ute med åt andra personer totalt, samt hur mycket hon själv är skyldig de andra totalt), sedan skall personobjekt skapas som läggs till objektet av typen PersonLista, som slutligen returneras. Dvs man bygger upp med fler och fler personer till den array som är attribut inne objekt av typen PersonLista.
+
+Detta är en viktig metod i klassen. 
+I denna metod så är alltså ett delproblem att helt enkelt ta reda på alla olika (unika) namn som finns på personer i transaktionslistan.
+
+###################################################################################################################################################
+Huvudprogrammet main
+
+Målet är att läsa in transaktioner och reda ut alla skulder etc, så att alla blir nöjda! Det finns olika sätt att styra programmet. I vårt fall är programmet kan vara menystyrt enligt koden nedan. Man skulle kunna få huvudprogrammet kortare med en separat funktion, men det behöver inte göras för denna uppgift. Programmet börjar med att läsa en fil med transaktionsdata, t ex resa.txt, se ovan. Sedan kan användaren välja några olika saker att göra, t ex lägga till ett extrakvitto (transaktion), som virvlat fram ur gömmorna. Programmet reder ut vem som skall betala vad till potten, eller ta från potten.
+
+###################################################################################################################################################
+int main()
+{
+  cout << "Startar med att läsa från en fil." << endl;
+
+  TransaktionsLista transaktioner;
+  std::ifstream     is("resa.txt");
+  transaktioner.lasIn(is);
+
+  int operation = 1;
+  while (operation != 0)
+    {
+      cout << endl;
+      cout << "Välj i menyn nedan:" << endl;
+      cout << "0. Avsluta. Alla transaktioner sparas på fil." << endl;
+      cout << "1. Skriv ut information om alla transaktioner." << endl;
+      cout << "2. Läs in en transaktion från tangentbordet." << endl;
+      cout << "3. Beräkna totala kostnaden." << endl;
+      cout << "4. Hur mycket ärr en viss person skyldig?" << endl;
+      cout << "5. Hur mycket ligger en viss person ute med?" << endl;
+      cout << "6. Lista alla personer mm och FIXA" << endl;
+
+      cin >> operation;
+      cout << endl;
+
+      switch (operation)
+        {
+          case 1:
+            {
+              transaktioner.skrivUt(cout);
+              break;
+            }
+          case 2:
+            {
+              Transaktion transaktion;
+              cout << "Ange transaktion i följande format" << endl;
+              transaktion.skrivTitel(cout);
+              transaktion.lasIn(cin);
+              transaktioner.laggTill(transaktion);
+              break;
+            }
+          case 3:
+            {
+              cout << "Den totala kostnanden för resan var "
+                   << transaktioner.totalKostnad() << endl;
+              break;
+            }
+          case 4:
+            {
+              cout << "Ange personen: ";
+              string namn;
+              cin >> namn;
+              double ar_skyldig = transaktioner.arSkyldig(namn);
+              if (ar_skyldig == 0.)
+                cout << "Kan inte hitta personen " << namn << endl;
+              else
+                cout << namn << " är skyldig " << ar_skyldig << endl;
+              break;
+            }
+          case 5:
+            {
+              cout << "Ange personen: ";
+              string namn;
+              cin >> namn;
+              double ligger_ute_med = transaktioner.liggerUteMed(namn);
+              if (ligger_ute_med == 0.)
+                cout << "Kan inte hitta personen " << namn << endl;
+              else
+                cout << namn << " ligger ute med " << ligger_ute_med << endl;
+              break;
+            }
+          case 6:
+            {
+              cout << "Nu skapar vi en personarray och reder ut det hela!" << endl;
+              PersonLista lista = transaktioner.fixaPersoner();
+              lista.skrivUtOchFixa(cout);
+              break;
+            }
+        }
+    }
+
+  std::ofstream os("transaktioner.txt");
+  transaktioner.skrivUt(os);
+
+  return 0;
+}
+###################################################################################################################################################
+ 
+
+Körning nr 1 av huvudprogrammet ger följande resultat (fet stil är det som användaren, den som kör programmet, ger):
+
+###################################################################################################################################################
+Startar med att läsa från en fil.
+
+Välj i menyn nedan:
+0. Avsluta. Alla transaktioner sparas på fil.
+1. Skriv ut information om alla transaktioner.
+2. Läs in en transaktion från tangentbordet.
+3. Beräkna totala kostnaden.
+4. Hur mycket är en viss person skyldig?
+5. Hur mycket ligger en viss person ute med?
+6. Lista alla personer mm och FIXA
+1
+
+Antal trans = 10
+Datum   Typ     Namn    Belopp  Antal och lista av kompisar
+190615  transp  Eva     6000    5       Bosse   Kristin  Paul    Torsten Stina
+190721  mat     Eva     300     2       Bosse   Kristin
+190721  mat     Paul    400     2       Torsten Stina
+190721  transp  Bosse   5000    3       Eva     Kristin  Paul
+190721  transp  Stina   5000    1       Torsten
+190722  boende  Kristin 200     1       Eva
+190722  mat     Eva     300     2       Kristin Bosse
+190723  mat     Torsten 300     2       Paul    Stina
+190724  mat     Paul    200     1       Stina
+190725  transp  Eva     600     3       Bosse   Kristin  Paul
+
+Välj i menyn nedan:
+0. Avsluta. Alla transaktioner sparas på fil.
+1. Skriv ut information om alla transaktioner.
+2. Läs in en transaktion från tangentbordet.
+3. Beräkna totala kostnaden.
+4. Hur mycket är en viss person skyldig?
+5. Hur mycket ligger en viss person ute med?
+6. Lista alla personer mm och FIXA
+6
+
+Nu skapar vi en personarray och reder ut det hela!
+Eva ligger ute med 5850 och är skyldig 1350. Skall ha 4500 från potten!
+Paul ligger ute med 366.667 och är skyldig 2500. Skall lägga 2133.33 till potten!
+Bosse ligger ute med 3750 och är skyldig 1350. Skall ha 2400 från potten!
+Stina ligger ute med 2500 och är skyldig 1333.33. Skall ha 1166.67 från potten!
+Kristin ligger ute med 100 och är skyldig 2600. Skall lägga 2500 till potten!
+Torsten ligger ute med 200 och är skyldig 3633.33. Skall lägga 3433.33 till potten!
+
+...etc.
+
+###################################################################################################################################################
+
+Testa sedan alla 6 optioner och visa utskriften i alla dessa fall.
+
+Körning nr 2 av huvudprogrammet med följande data:
+
+###################################################################################################################################################
+190721  mat     Eva     200     1       Bosse 
+190722  mat     Eva     400     1       Bosse 
+190725  transp  Eva     600     1       Bosse 
+190725  mat     Bosse   200     1       Eva 
+skulle ge denna körning:
+
+Startar med att läsa från en fil.
+
+Välj i menyn nedan:
+0. Avsluta. Alla transaktioner sparas på fil.
+1. Skriv ut information om alla transaktioner.
+2. Läs in en transaktion från tangentbordet.
+3. Beräkna totala kostnaden.
+4. Hur mycket är en viss person skyldig?
+5. Hur mycket ligger en viss person ute med?
+6. Lista alla personer mm och FIXA
+6
+
+Nu skapar vi en personarray och reder ut det hela!
+Eva ligger ute med 600 och är skyldig 100. Skall ha 500 från potten!
+Bosse ligger ute med 100 och är skyldig 600. Skall lägga 500 till potten!
+...
+###################################################################################################################################################
+
+Här räcker det att rapportera bara körning med option 1 och 6 av programmet.
+
+Kommentarer i allmänhet
+
+Obs!: För att göra det lättare: Antag att namn alltid är enbart förnamn. Inga personer har samma namn. 
+Alla deltagare har någon gång betalat för sig själv och andra, du behöver alltså inte leta efter personer bland kompisar
+Använd det som redan finns!
+
+När klassen TransaktionsLista implementeras så bör man naturligvis använda metoder i klassen Transaktion! 
+På samma sätt med klassen PersonLista och Person. Ofta är det ju så här det fungerar i verkligheten som programmerare, man måste lyda vissa regler, t ex ha vissa klasser.
+Du får ändra klassdeklarationerna om du vill, dvs lägga till metoder av olika slag måste du troligen göra (främst dock i del b). Se dock till att behålla grundstrukturen.
+Det går att lösa uppgiften med funktionerna som finns i koden ovan, du behöver alltså inte lägga till ytterligare funktioner i klasserna.
+Lämpliga värden på konstanterna kan vara ungefär
+MAX_PERSONER = 10
+MAX_TRANSAKTIONER = 30
+Det går bra att välja andra värden på dessa.
+
+OBS! Mycket viktigt
+Vi vill inte att du slösar bort tid i onödan, vilket lätt är hänt då man försöker skriva ett helt program med flera klasser direkt, utan att testa delarna för sig. 
+Lös lite i taget! Jobba först med enbart klassen Transaktion och testa den först med ett eget huvudprogram, inte det huvudprogram som finns ovan och är avsedd att användas när allt är på plats. Fortsätt sedan med att utöka hela programmet med klassen TransaktionsLista - lite i taget (ej alla metoder direkt från början, och undvik delen som använder PersonLista). Börja med att enbart ha med metoder som medför att det går att testa att läsa in från fil och skriva ut på fil. Bygg sedan på en metod i taget och testa.
+
+På samma sätt med klassen Person och PersonLista. Testa den första först i eget huvudprogram innan du börjar skriva den andra klassen och testa den.
+
+##########################################################################################################################################################################################################

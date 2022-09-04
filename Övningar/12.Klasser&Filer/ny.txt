@@ -1,0 +1,11 @@
+Blomgrupp: Flox 1 1 30
+Blomgrupp: Flox 1 2 30
+Blomgrupp: Flox 2 2 30
+Blomgrupp: Flox 2 1 30
+Blomgrupp: Tulpan 2 5 20
+Blomgrupp: Rödros 13 10 2
+Blomgrupp: Lilja 14 145 10000
+Blomgrupp: Solros 4 3 4
+Blomgrupp: Blåklocka 6 6 6
+Blomgrupp: Blåklocka 5 6 6
+Blomgrupp: Blåklocka 4 6 6

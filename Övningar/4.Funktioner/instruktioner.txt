@@ -1,0 +1,294 @@
+1. Funktioner med parametrar
+
+A) Ett program skriver ut HEJ så många gånger som användaren önskar.
+Exempel på en körning:
+
+Jag hälsar på dej!
+Hur många gånger vill Du bli hälsad?
+4
+HEJ!
+HEJ!
+HEJ!
+HEJ!
+Vi ses!
+Nedan finns ett ofullständigt program som du skall komplettera så att det fungerar enligt ovan. 
+Programmet består av en funktion greetings som skriver ut så många HEJ! som användaren önskar. 
+Informationen om antalet HEJ som skall skrivas ut skickas från main till funktionen greetings.
+
+#include <iostream>
+using namespace std;
+
+// Funktionsdeklaration:
+// En in-parameter (s.k. värdeparameter): antal
+// Inget returvärde, dvs void
+
+void greetings(int varv);
+
+int main()  //huvudprogram
+{
+      int antal;
+
+      cout << "Jag hälsar på dej!" << endl;
+      cout << "Hur många gånger vill Du bli hälsad?" << endl;
+      cin >> antal;  // main frågar efter antalet
+
+      // Värdet av antal skall skickas till funktionen
+      ...    //fyll i funktionsanropet
+
+      cout << "Vi ses!" << endl;
+
+      return 0;
+}
+
+// Funktionsdefinition
+void greetings(...)  //fyll i parameterlistan
+{
+      for ( int i = 0; i < varv; i++ )
+          cout << " HEJ!" << endl;
+} //Varför avslutas inte funktionen med en return-sats?
+
+B. Ett program producerar följande resultat vid en körning:
+Mata in två heltal
+5 3
+Talens summa är: 8
+Talens differens är: 2
+Talens produkt är: 15
+Programmet frågar efter två heltal. Talens summa, differens och produkt beräknas och skrivs ut.
+
+Nedan finns ett ofullständigt program som du skall komplettera så att det fungerar enligt ovan. 
+Programmet består av en funktion berakna som utför beräkningarna. 
+De två talen som läses in av main skickas som parametrar (värde) till funktionen.
+
+#include <iostream>
+using namespace std;
+
+//funktionsdeklaration
+...  //fyll i funktionsdeklarationen. Ledtråd: se funktionsanropet i main
+
+int main()
+{
+   int a, b;
+
+   cout << "Mata in två heltal: " << endl;
+   cin >> a >> b;
+
+   berakna(a, b);  //funktionsanrop med två värdeparametrar. Inget returvärde.
+
+   return 0;
+}
+
+//funktionsdefinition
+.... //fyll i funktionshuvudet, dvs returtyp, funktionsnamn, ev. parametrar
+
+{ // Satserna mellan { och } kallas för funktionens kropp.
+   cout << "Talens summa är: " << x + y << endl;
+   cout << ...  
+   cout << ...
+   ...  //Skall det finnas en return-sats här?
+} //avsluta funktionen
+
+C. Ett program producerar följande resultat vid en körning:
+Mata in två heltal:
+7 9
+Talens produkt blir: 63
+Programmet frågar efter två heltal. Talens produkt beräknas och skrivs ut.
+
+Här är ett ofullständigt program som du skall komplettera så att det fungerar enligt ovan:
+
+#include <iostream>
+using namespace std;
+
+...  //fyll i funktionsdeklarationen. Ett heltal returneras från funktionen.
+     //Vilken typ bör den då ha?
+
+int main()
+{
+      int a, b;
+
+      cout << "Mata in två heltal: " << endl;
+
+      ...  //fyll i det som saknas i main
+
+      cout << "Produkten blir: " ...  
+
+      return 0;
+}
+      
+...  //Skriv funktionsdefinitionen själv
+
+***********************************************************************************************************************************
+
+2. Funktioner utan parametrar
+
+A) Komplettera nedanstående program så det fungerar som uppgift 1A) men funktionen (och inte main) skall fråga efter antal varv. 
+Se uppgift 1A) hur utskriften kan se ut.
+ 
+#include <iostream>
+using namespace std;
+
+// Funktionsdeklaration
+... greetings();   //fyll i funktionens returtyp. Ledtråd: skall något 
+                   //returneras från funktionen?
+                   //Observera den tomma parameterlistan: inga in-
+                   // eller ut parametrar. Vad menas med det?
+
+int main()
+{
+
+      cout << "Jag hälsar på dej!" << endl;
+
+      ...    //fyll i funktionsanropet
+
+      cout << "Vi ses!" << endl;
+
+      return 0;
+}
+
+//funktionsdefinition
+...  //fyll i funktionshuvudet
+
+{
+      int antal_varv;
+
+      cout << "Hur många gånger vill Du bli hälsad?" << endl;
+      cin >> antal_varv;
+
+      for (int i=0; i<antal_varv; i++)
+          cout << " HEJ!" << endl;
+}
+
+B) Komplettera nedanstående program så det fungerar som uppgift 1C) men funktionen berakna ska fråga efter två heltal. 
+Talens produkt beräknas i funktionen. Resultatet skrivs ut i main. Se uppgift 1C) hur utskriften kan se ut.
+ 
+
+#include <iostream>
+using namespace std;
+
+...  //fyll i funktionsdeklarationen för berakna
+
+int main()
+{
+      int resultat;
+      
+      resultat = ...    //fyll i det som fattas när berakna anropas
+      cout << "produkten blir: " << resultat << endl;
+
+      return 0;
+}
+
+...  //Skriv funktionsdefinitionen själv
+
+
+3. Funktioner med referensparametrar.
+
+A) Ett program producerar följande resultat vid en körning:
+
+Mata in två tal:
+5 3
+Talens summa är: 8
+Talens differens är: 2
+Programmet frågar efter två heltal. Talens summa och differens beräknas och skrivs ut.
+
+Nedan finns ett ofullständigt program som du skall komplettera så att det fungerar enligt ovan. 
+Programmet består av funktionen berakna. Summan och differensen returneras till main och skrivs ut där. 
+Fungerar det med returvärde om två tal skall returneras? Tips: Ett annat sätt att "returnera" (ge tillbaks) värden är att använda referensparametrar.
+
+#include <iostream>
+using namespace std;
+
+void berakna(...);  //fyll i parameterlistan i funktionsdeklarationen
+
+int main()
+{
+      int a, b, summa, differens;
+
+      cout << "Mata in två heltal: " << endl;
+      cin >> a >> b;
+
+      berakna(a, b, ...);  //fyll i det som saknas i main
+
+      cout << "Talens summa är: " << summa << endl;
+      cout << "Talens differens är: " << differens << endl;
+
+      return 0;
+}
+
+...  //Skriv funktionsdefinitionen själv. Skall det finnas någon return-sats?
+
+B) Funktionen berakna frågar efter två heltal. Talens summa och differens beräknas i funktionen. 
+Resultatet skrivs ut av main. Se uppgift 3A) hur utskriften kan se ut.
+
+#include <iostream>
+using namespace std;
+
+...  //fyll i funktionsdeklarationen
+
+int main()
+{
+      int summa, differens;
+
+      ...  //skriv funktionsanropet
+
+      cout << "Talens summa är: " << summa << endl;
+      cout << "Talens differens är: " << differens << endl;
+
+      return 0;
+}
+
+...  //Skriv funktionsdefinitionen själv. OBS: inmatningen av de två 
+     //talen skall ske i funktionen, inte i main.
+
+4. 
+Skriv en funktion min som har två heltal som indata och som returnerar det minsta av de två talen. 
+Skriv även ett main som testar funktionen, dvs anropa funktionen med syfte att kontrollera att funktionen fungerar.
+
+Kodhjälp:
+
+int min( int x, int y ); // Funktionsdeklaration.
+
+5.
+Skriv en funktion min_max som beräknar det minsta samt det största talet av två inmatade heltal. 
+Skriv även ett main som testar funktionen.
+
+Kodhjälp:
+
+// Funktionsdeklaration
+void min_max( int a, int b, int &min, int &max );
+
+6. 
+Skriv en funktion ant_sek som givet ett antal timmar, minuter och sekunder beräknar antalet sekunder som detta motsvarar. 
+Skriv även ett main som testar funktionen ant_sek, dvs läser in tre heltal och returnerar ett heltal.
+
+7.
+Skriv en funktion LasTecken som läser in ett tecken som skall vara A, B eller C. Så länge som tecknet ej är A, B eller C ska funktionen upprepa inläsningen. När ett korrekt tecken blivit inläst ska funktionen returnera tecknet.
+Huvudprogrammet som testar funktionen kan se ut så här:
+
+int main()
+{
+  char svar;
+  svar = LasTecken();
+  cout << "Svaret = " << svar << endl;
+  return 0;
+}
+Antag att huvudprogrammet kunde styra funktionen genom att skicka med parametrar som angav vilka tre tecken som är godkända att läsas in. 
+Hur skulle denna alternativa funktion se ut?
+Tips: Anropet i main kan se ut så här:
+
+char ch1='D', ch2='E', ch3='F';
+svar = LasTeckenAlt(ch1,ch2,ch3);
+Eller så här:
+
+svar = LasTeckenAlt('K','L','M');
+
+8.
+Skriv en funktion byt som byter värden på två variabler. 
+Skriv också ett huvudprogram som testar funktionen, dvs läser in två tal, anropar funktionen och sedan skriver ut talen som då bytt värde. 
+(Denna funktion är en klassiker i programmeringssammanhang :-) )
+
+9.
+Skriv en funktion som tar emot en parameter av typ heltal och returnerar talets siffersumma. 
+Skriv också ett huvudprogram som testar funktionen, dvs läser in ett tal, anropar funktionen och sedan skriver ut siffersumman.
+
+Exempel: Talet 123 har siffersumman 6 (eftersom 1+2+3=6), talet 8736 har siffersumman 8+7+3+6 = 24 (eftersom 8+7+3+6 = 24).
+
+Tips: man använder "/10" och "%10" och har en loop där man "plockar " sista siffran och adderar till en summa.

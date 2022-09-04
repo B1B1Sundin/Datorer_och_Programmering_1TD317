@@ -1,0 +1,76 @@
+1. 
+a) Skapa projekt.
+
+b) Provkör programmet.
+
+c) Ändra programmet så att första cout-satsen blir: cout << "Välkommen!" << endl; 
+Provkör igen. Vilken blir skillnaden?
+- Skillnaden blir att "Välkommen"" skrivs ut på en egen rad och resterande skrivs ut på nästa rad. 
+
+d) Ändra så att utskriften blir på tre rader.
+
+e) Spara programmet som ovning1_1.cpp.
+
+2.
+a) Skapa projekt, kalla det t ex ovning1_2.
+
+b) Provkör programmet.
+
+c) Ändra sats 5:
+      cout << "x" << endl; 
+Provkör igen. Vilken blir skillnaden? Ta nu bort citationstecknen igen. Spara.
+- Med citationstecknen så tolkas det som en sträng, snarare än en variabel som håller ett värde. 
+
+d) Ändra sats 6:
+      cout << "Mata in" << " ett nytt" << " tal: " << endl; 
+Provkör igen. Vilken blir skillnaden?
+- Med " << endl; " så blir det en newline och input värdet skrivs in på nästa rad. Texten skrivs ut precis som innan.
+
+e) Sätt ihop sats 4 och 5 till en sats:
+      cout << "Du skrev talet " << x << endl;
+Provkör.
+
+f) Prova att ändra till:
+      cout << "Du skrev talet " << "x" << endl;
+Provkör. Vilken blir skillnaden? Ta bort citationstecknen runt x.
+- Ännu en gång, x kommer att tolkas som en sträng och inte int.
+
+g) Ändra sats 1: (vi vill ha en ny variabel y)
+      int x, y;
+Ändra sats 7, 8 och 9:
+      cin >> y;                                 //sats 7
+      cout << "Summan av talen blir: ";         //sats 8
+      cout << x+y << endl;                      //sats 9 
+Provkör.
+
+h) Sätt ihop sats 8 och 9 till en sats. Provkör.
+
+i) Lägg till en ny variabel i sats 1:
+      int x, y, produkt;
+Lägg till följande två satser efter sats 9:
+     produkt = x*y;  //sats 10: variabeln produkt får värdet av produkten
+                     // av dina två inmatade tal
+     cout << x << "*" << y << " = " << produkt << endl;  //sats 11
+
+Provkör och spara programmet som ovning1_2.cpp
+
+3. 
+När man kör programmet kan det se ut så här:
+   Hur gammal är du? 30
+   Du är 360 månader dvs 10950 dagar.
+Spara programmet som ovning1_3.cpp
+
+4. 
+Skriv ett program som läser in två tal. Skriv sedan ut talen och deras summa.
+Exempel på hur det kan se ut när man kör programmet:
+   Mata in ett tal: 4 
+   Mata in ett tal till: 7
+   Talen är 4 och 7. Summan av talen blir 11
+Spara programmet som ovning1_4.cpp
+
+5. 
+Skriv ett program som läser in ett datum som tre tal , t ex
+   2008 10 11
+och skriver ut datumet på följande sätt:
+   11/10 2008
+Spara programmet som ovning1_5.cpp

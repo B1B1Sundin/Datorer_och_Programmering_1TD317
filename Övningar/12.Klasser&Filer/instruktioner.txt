@@ -1,0 +1,154 @@
+Uppgifter
+
+1. 
+Fortsätt med temperaturprogrammet, temperatur2.cpp  
+Ladda ner temperatur2.cpp, från en övning i modulen Klasser. 
+Utvidga klassen temperatur i det programmet med följande metoder:
+1. void skriv( ostream &ut ) som skriver ut (lagrar) ett objekt av klassen temperatur på en fil, dvs attributvärden skrivs ut.
+2. void lasin( istream &in ) som läser in (hämtar) ett objekt av klassen temperatur från en fil, dvs inläsning av attributvärden för ett objekt sker.
+
+Skriv även ett huvudprogram som testar dessa metoder. 
+
+Eftersom cout är ett objekt (dvs en vanlig ström/filvariabel) av klassen ostream så kan vi anropa metoden skriv på följande sätt:
+
+      t1.skriv(cout); 
+och anropet gör att objektet t1 skrivs ut på skärmen. Samma gäller cin för inläsning. Vi behöver därför kanske inte de gamla metoderna skriv och lasin. 
+Men ofta har man flera inläsnings- och utskriftsmetoder i alla fall, t ex för kompakt utskrift.
+
+Algoritm huvudprogram:
+
+1.Skapa en array av temperaturobjekt.
+2.Skriv ut arrayens värden på skärmen och på fil.
+3.Stäng filen för utskrift, öppna den för inläsning.
+4.Läs värden från filen till en array av temperatur-objekt.
+5.Skriv ut arrayvärden på skärmen.
+ 
+
+OBS! Metoden lasin läser alltså in temperaturdata från enbart en rad i filen. Denna metod antar att filen redan är öppnad för läsning i main. Inläsning av många temperaturdata sker i main genom att man anropar temperatur-klassens lasin-funktion om och om igen (dvs rad för rad läses attributdata in) tills end of file påträffas.
+
+En klurighet här är att lasin-metoden är en void-metod. Inläsningen får ske på samma sätt som när man gör "klassisk while-loop vid inläsning av tal". Antag vi testar på positiva tal istället för end of file nu.
+
+double x;   // temporär variabel som hjälp
+double arrayen[MAX];
+int antal = 0;
+
+cin >> x;
+
+while ( antal < MAX && x > 0 )
+  {
+    // Gör ngt med x
+    arrayen[antal] = x;
+    antal++;
+      
+    cin >> x;  // Läs nytt värde
+   }
+dvs skapa ett temporärt temperatur-objekt i huvudprogrammet, enTemp
+
+1.Läs värden till enTemp
+2. Loopa så länge det ej är end of file
+ - Gör ngt med inläst objekt (tilldela arrayelement, uppdatera antal)
+ - Läs in data till objekt enTemp igen.
+
+2.
+Ändra i koden för uppgiften ovan så att lasin-metoden returnerar en bool, dvs sant om filen ej är slutläst, men falskt om den är det.
+Skriv om huvudprogrammet och testa metoden.
+
+3. 
+Klassen Blomgrupp representerar ett antal blommor av en viss art (given av namnet Tulpan, Flox, etc.) placerade på ett givet ställe i trädgården, dvs i position (x,y) i ett visst antal.
+Klassdefinition:
+
+#include 
+#include 
+#include 
+using namespace std;
+
+class Blomgrupp 
+{
+private:
+  int x, y;       // Positionen (x,y) i trädgården
+  string namn;    // Namn på blomgruppen (ex. tulpan)
+  int antal;      // Antal st blommor i blomgruppen
+
+public:
+  Blomgrupp();
+  Blomgrupp ( string namnin, int antalin,
+              int xin, int yin );
+
+  //--Returnerar antalet blommor i denna blomgrupp.
+  int hamtaAntal();
+
+  //--Returnera sant om blomgr. finns i (xx,yy).
+  bool liggeri( int xx, int yy ); 
+
+  //--Returnerar sant om blomgruppen heter n.
+  bool sammanamn( string n );
+
+  //--Läser in data om blomgrupp från fil.
+  bool laes( istream &is );
+
+  //--Skriver info om blomgruppen.
+  void skriv( ostream &os );                   
+};
+Antag att filen blommor0.txt  ser ut så här:
+
+Flox	       30	1	1
+Flox	       30	1	2
+Flox	       30	2	2
+Flox	       30	2	1
+Tulpan	       20	2	5
+Rödros	       2	13	10
+Lilja	       10000	14	145
+Solros	       4	4	3
+Blåklocka      6	6	6
+Blåklocka      6	5	6
+Blåklocka      6	4	6
+Körning av ett huvudprogram, som enbart testar inläsnings- och utskriftsmetoderna laes, skriv kan se ut så här:
+
+Vad vill du göra?
+1) Läsa från fil och skriva på skärmen.
+2) Läsa från fil och skriva på ny fil (ny.txt).
+1
+
+Blomgrupp: Flox 1 1 30
+Blomgrupp: Flox 1 2 30
+Blomgrupp: Flox 2 2 30
+Blomgrupp: Flox 2 1 30
+Blomgrupp: Tulpan 2 5 20
+Blomgrupp: Rödros 13 10 2
+Blomgrupp: Lilja 14 145 10000
+Blomgrupp: Solros 4 3 4
+Blomgrupp: Blåklocka 6 6 6
+Blomgrupp: Blåklocka 5 6 6
+Blomgrupp: Blåklocka 4 6 6
+eller utskrift på fil:
+
+Vad vill du göra?
+1) Läsa från fil och skriva på skärmen.
+2) Läsa från fil och skriva på ny fil (ny.txt).
+2
+Ny fil (ny.txt) skapas!
+Då ser ny.txt ut så här:
+
+Blomgrupp: Flox 1 1 30
+Blomgrupp: Flox 1 2 30
+Blomgrupp: Flox 2 2 30
+Blomgrupp: Flox 2 1 30
+Blomgrupp: Tulpan 2 5 20
+Blomgrupp: Rödros 13 10 2
+Blomgrupp: Lilja 14 145 10000
+Blomgrupp: Solros 4 3 4
+Blomgrupp: Blåklocka 6 6 6
+Blomgrupp: Blåklocka 5 6 6
+Blomgrupp: Blåklocka 4 6 6
+
+Du skall skriva metoderna för inläsning och utskrift, dvs laes och skriv, förutom standardkonstruktor. 
+Metoderna skall vara generella i den meningen att man skall kunna läsa från tangentbord eller fil och kunna skriva på skärm eller fil. 
+Skriv ett huvudprogram som testar att läsa från fil samt att skriva till både skärm och fil.
+
+Metoden laes läser en rad i filen och tilldelar Blomgrupp-objektet attributvärden. 
+Metoden returnerar false om filen, efter inläsning en rad, är slut, annars returneras true. Inläsning i huvudprogrammet måste ske på sådant sätt att man skall kunna läsa från "vilken blomfil som helst", dvs programmeraren skall ej veta antaler rader i filen! Programmet skall läsa tills filen är slut.
+
+Implementera också den överlagrade konstruktorn och resten av metoderna (hamtaAntal, liggeri, sammanamn, hamtanamn).
+
+ 
+
