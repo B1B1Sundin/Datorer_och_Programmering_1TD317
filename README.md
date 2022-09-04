@@ -1,2 +1,2 @@
 # Datorer_och_Programmering_1TD317
-Kurs på Uppsala Universitet. Egen kod.
+A c++ programming course from Uppsala University. This is my solutions to the tasks and exercises.
